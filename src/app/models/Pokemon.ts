@@ -15,3 +15,4 @@ interface Pokemon {
 }
 
 export default Pokemon;
+export const EMPTY_POKEMON = <Pokemon>{};

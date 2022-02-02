@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FETCH_SERVICE } from 'src/app/services/fetch.service.token';
 import { PokeServiceSpy } from 'src/app/utils/testing/poke.service.spy';
-import Pokemon from '../../../models/Pokemon';
+import Pokemon, { EMPTY_POKEMON } from '../../../models/Pokemon';
 import { PokeCardComponent } from '../../component/poke-card/poke-card.component';
 import { PokedexModule } from '../../pokedex.module';
 import { PokeListComponent } from './poke-list.component';
@@ -53,6 +53,6 @@ describe('PokeListComponent', () => {
   });
 
   it('should pass a pokemon to a PokeCard component', () => {
-    expect(childComponent.poke).not.toEqual(<Pokemon>{});
+    expect(childComponent.poke).not.toEqual(EMPTY_POKEMON);
   });
 });

@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import Pokemon from 'src/app/models/Pokemon';
+import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
 import { FetchService } from 'src/app/services/fetch.service.interface';
 import { FETCH_SERVICE } from 'src/app/services/fetch.service.token';
 
@@ -10,7 +10,7 @@ import { FETCH_SERVICE } from 'src/app/services/fetch.service.token';
   styleUrls: ['./poke-list.component.scss'],
 })
 export class PokeListComponent implements OnInit {
-  public pokes$: Observable<Pokemon[]> = of([<Pokemon>{}]);
+  public pokes$: Observable<Pokemon[]> = of([EMPTY_POKEMON]);
 
   constructor(
     @Inject(FETCH_SERVICE) private pokeFetchService: FetchService<Pokemon>

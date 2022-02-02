@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import Pokemon from 'src/app/models/Pokemon';
+import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
 import { FETCH_SERVICE } from 'src/app/services/fetch.service.token';
 import { PokeServiceSpy } from 'src/app/utils/testing/poke.service.spy';
 import { pokes } from 'src/app/utils/testing/pokes';
@@ -32,11 +32,11 @@ describe('PokegameComponent', () => {
   });
 
   it('should fetch a randon not seen pokemon', () => {
-    component.poke$
-      .subscribe((poke) => {
-        console.log(poke);
-        expect(poke).not.toEqual(<Pokemon>{});
-        expect(poke).toBe(pokes[0]);
+    component.randomPoke$
+      .subscribe((randomPoke) => {
+        console.log(randomPoke);
+        expect(randomPoke).not.toEqual(EMPTY_POKEMON);
+        expect(randomPoke).toBe(pokes[0]);
       })
       .unsubscribe();
   });

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import Pokemon from 'src/app/models/Pokemon';
+import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
 
 import { PokeCardComponent } from './poke-card.component';
 
@@ -43,7 +43,7 @@ describe('PokeCardComponent', () => {
   });
 
   it(`should display some pokemon info`, () => {
-    expect(component.poke).not.toEqual(<Pokemon>{});
+    expect(component.poke).not.toEqual(EMPTY_POKEMON);
   });
 
   it('should hold a pokemon card content', () => {
