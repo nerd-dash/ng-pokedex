@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
+import { SeenPokeCardComponent } from '../seen-poke-card/seen-poke-card.component';
+import { UnseenPokeCardComponent } from '../unseen-poke-card/unseen-poke-card.component';
 
 import { PokeCardComponent } from './poke-card.component';
 
@@ -26,7 +28,11 @@ describe('PokeCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PokeCardComponent],
+      declarations: [
+        PokeCardComponent,
+        UnseenPokeCardComponent,
+        SeenPokeCardComponent,
+      ],
     }).compileComponents();
   });
 

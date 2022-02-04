@@ -4,7 +4,8 @@ import { map } from 'rxjs/operators';
 import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
 import { FetchService } from 'src/app/services/fetch.service.interface';
 import { FETCH_SERVICE } from 'src/app/services/fetch.service.token';
-import { getRandomIndex } from 'src/app/utils/utils';
+import { UtilsService } from 'src/app/services/utils.service';
+
 
 @Component({
   selector: 'app-pokegame',
@@ -15,8 +16,8 @@ export class PokegameComponent implements OnInit {
   public randomPoke$: Observable<Pokemon> = of(EMPTY_POKEMON);
 
   constructor(
-    @Inject(FETCH_SERVICE) private pokeFetchService: FetchService<Pokemon>
-  ) {}
+    @Inject(FETCH_SERVICE) private pokeFetchService: FetchService<Pokemon>, private utils: UtilsService
+  ) { }
 
   ngOnInit(): void {
     this.randomPoke$ = this.pokeFetchService
@@ -27,8 +28,8 @@ export class PokegameComponent implements OnInit {
   }
 
   private filterUnseendPokemon = (pokes: Pokemon[]): Pokemon[] =>
-    pokes.filter((poke) => !poke.seen) || [];
+    pokes.filter((poke) => !poke.seen);
 
   private findRandomPokemon = (pokes: Pokemon[]): Pokemon =>
-    pokes[getRandomIndex<Pokemon>(pokes)] || EMPTY_POKEMON;
+    pokes[this.utils.getRandomIndex<Pokemon>(pokes)];
 }

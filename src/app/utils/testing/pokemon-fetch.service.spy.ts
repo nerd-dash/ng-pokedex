@@ -3,8 +3,8 @@ import Pokemon from 'src/app/models/Pokemon';
 import { FetchService } from 'src/app/services/fetch.service.interface';
 import { pokes } from './pokes';
 
-export abstract class PokeServiceSpy {
-  public static provide = (): jasmine.SpyObj<FetchService<Pokemon>> => {
+export abstract class PokemonFetchServiceSpy {
+  public static ProvideSpy = (): jasmine.SpyObj<FetchService<Pokemon>> => {
     const pokeServiceSpy = jasmine.createSpyObj<FetchService<Pokemon>>([
       'getAll$',
       'get$',

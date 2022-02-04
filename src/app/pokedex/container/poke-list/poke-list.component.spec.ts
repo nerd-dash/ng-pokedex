@@ -1,12 +1,19 @@
-import { DebugElement } from '@angular/core';
+import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { FetchService } from 'src/app/services/fetch.service.interface';
 import { FETCH_SERVICE } from 'src/app/services/fetch.service.token';
-import { PokeServiceSpy } from 'src/app/utils/testing/poke.service.spy';
+import { PokemonFetchServiceSpy } from 'src/app/utils/testing/pokemon-fetch.service.spy';
 import Pokemon, { EMPTY_POKEMON } from '../../../models/Pokemon';
 import { PokeCardComponent } from '../../component/poke-card/poke-card.component';
-import { PokedexModule } from '../../pokedex.module';
 import { PokeListComponent } from './poke-list.component';
+
+@Component({
+  selector: 'app-poke-card',
+  template: ''
+})
+class FakePokeCardComponent extends PokeCardComponent { }
+
 
 describe('PokeListComponent', () => {
   let component: PokeListComponent;
@@ -16,11 +23,17 @@ describe('PokeListComponent', () => {
   let childComponentEl: DebugElement;
   let childComponent: PokeCardComponent;
 
+  let pokeFetchServiceSpy: jasmine.SpyObj<FetchService<Pokemon>>
+
   beforeEach(async () => {
+
+    pokeFetchServiceSpy = PokemonFetchServiceSpy.ProvideSpy();
+
     await TestBed.configureTestingModule({
-      imports: [PokedexModule],
+      declarations: [FakePokeCardComponent, PokeListComponent],
       providers: [
-        { provide: FETCH_SERVICE, useValue: PokeServiceSpy.provide() },
+        { provide: FETCH_SERVICE, useValue: pokeFetchServiceSpy },
+
       ],
     }).compileComponents();
   });
@@ -31,9 +44,9 @@ describe('PokeListComponent', () => {
     fixture.detectChanges();
     compiled = fixture.nativeElement as HTMLElement;
     childComponentEl = fixture.debugElement.query(
-      By.directive(PokeCardComponent)
+      By.directive(FakePokeCardComponent)
     );
-    childComponent = childComponentEl.injector.get(PokeCardComponent);
+    childComponent = childComponentEl.injector.get(FakePokeCardComponent);
   });
 
   it('should create', () => {

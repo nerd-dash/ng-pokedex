@@ -43,7 +43,7 @@ describe('PokeFetchService', () => {
     });
   });
 
-  describe('get', () => {
+  describe('get$', () => {
     it('should make a GET request to pokemon Json and return an observable with requested pokemon data', () => {
       const id = 1;
       service.get$(id).subscribe((pokemon) => {
@@ -59,4 +59,11 @@ describe('PokeFetchService', () => {
       req.flush(pokes[0]);
     });
   });
+
+  describe('put$', () => {
+    it('should make a PUT request to pokmeon api update', () => {
+      fail('TODO')
+    })
+
+  })
 });
