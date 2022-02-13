@@ -1,13 +1,11 @@
 import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
 import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
-import { FetchService } from 'src/app/services/fetch.service.interface';
-import { FETCH_SERVICE } from 'src/app/services/fetch.service.token';
-import { UtilsService } from 'src/app/services/utils.service';
-import { VERIFICATION_SERVICE } from 'src/app/services/verification.service.token';
-import { PokemonFetchServiceSpy } from 'src/app/utils/testing/pokemon-fetch.service.spy';
-import { PokemonVerificationServiceSpy } from 'src/app/utils/testing/pokemon-verification.service.spy';
+import { GameStateService } from 'src/app/services/game-state.service.interface';
+import { GAME_STATE_SERVICE } from 'src/app/services/game-state.service.token';
+import { PokemonGameStateServiceSpy } from 'src/app/utils/testing/pokemon-game-state.service.spy';
 import { pokes } from 'src/app/utils/testing/pokes';
 import { WhosThatPokemonComponent } from '../whos-that-pokemon/whos-that-pokemon.component';
 import { PokegameComponent } from './pokegame.component';
@@ -27,19 +25,18 @@ describe('PokegameComponent', () => {
   let childComponentEl: DebugElement;
   let childComponent: FakeWhosThatPokemonComponent;
 
-  let pokeFetchServiceSpy: jasmine.SpyObj<FetchService<Pokemon>>
-
+  let pokemonGameStateSpy: GameStateService<Pokemon>;
 
   beforeEach(async () => {
 
-    pokeFetchServiceSpy = PokemonFetchServiceSpy.ProvideSpy();
+    pokemonGameStateSpy = PokemonGameStateServiceSpy.ProvideSpy();
+    pokemonGameStateSpy.getRandom$ = of(pokes[0]);
+
 
     await TestBed.configureTestingModule({
       declarations: [PokegameComponent, FakeWhosThatPokemonComponent],
       providers: [
-        { provide: FETCH_SERVICE, useValue: pokeFetchServiceSpy },
-        { provide: UtilsService, useValue: UtilsService.ProvideSpy() },
-        { provide: VERIFICATION_SERVICE, useValue: PokemonVerificationServiceSpy.ProvideSpy() }
+        { provide: GAME_STATE_SERVICE, useValue: pokemonGameStateSpy }
 
       ]
     }).compileComponents();

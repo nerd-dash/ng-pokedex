@@ -1,10 +1,8 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
-import { FetchService } from 'src/app/services/fetch.service.interface';
-import { FETCH_SERVICE } from 'src/app/services/fetch.service.token';
-import { VerificationService } from 'src/app/services/verification.service.interface';
-import { VERIFICATION_SERVICE } from 'src/app/services/verification.service.token';
+import { GameStateService } from 'src/app/services/game-state.service.interface';
+import { GAME_STATE_SERVICE } from 'src/app/services/game-state.service.token';
 
 @Component({
   selector: 'app-whos-that-pokemon',
@@ -20,16 +18,18 @@ export class WhosThatPokemonComponent implements WhosThatPokemonInterface, OnIni
     inputGuess: this.inputGuess
   })
 
-  constructor(@Inject(VERIFICATION_SERVICE) private pokemonVerificationService: VerificationService<Pokemon>, @Inject(FETCH_SERVICE) private pokeFetchService: FetchService<Pokemon>) { }
+  constructor(@Inject(GAME_STATE_SERVICE) private pokemonGameStateService: GameStateService<Pokemon>) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   public onSubmit = () => {
     const toBeTested = <Pokemon>{ name: this.inputGuess.value };
-    this.pokemonVerificationService.verify(toBeTested, this.poke);
+    this.pokemonGameStateService.verify$(toBeTested, this.poke);
   }
 
+  public nextPokemon= () => {
+    this.pokemonGameStateService.getNextRound();
+  };
 
 
 }
@@ -37,5 +37,6 @@ export class WhosThatPokemonComponent implements WhosThatPokemonInterface, OnIni
 export interface WhosThatPokemonInterface {
   poke: Pokemon,
   formGroup: FormGroup,
-  onSubmit: () => void
+  onSubmit: () => void,
+  nextPokemon: () => void,
 }

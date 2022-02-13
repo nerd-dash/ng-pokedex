@@ -3,5 +3,6 @@
     <label for="input-guess">
         <input name="input-guess" data-test="input-guess" type="text" formControlName="inputGuess">
     </label>
-    <button data-test="button-guess" type="submit">Go Pokeball!!!</button>
+    <button *ngIf="!poke.seen" data-test="button-guess" type="submit">Go Pokeball!!!</button>
+    <button *ngIf="poke.seen" data-test="button-next" (click)="nextPokemon()">Next Pokemon</button>
 </form>

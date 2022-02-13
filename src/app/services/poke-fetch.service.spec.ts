@@ -3,6 +3,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import Pokemon, { EMPTY_POKEMON } from '../models/Pokemon';
 import { pokes } from '../utils/testing/pokes';
 import { PokeFetchService } from './poke-fetch.service';
 
@@ -62,7 +63,19 @@ describe('PokeFetchService', () => {
 
   describe('put$', () => {
     it('should make a PUT request to pokmeon api update', () => {
-      fail('TODO')
+
+      const poke : Pokemon = {... pokes[2], seen: true}
+      service.put$(poke).subscribe((pokemon) => {
+        expect(pokemon).toBe(pokes[0]);
+      });
+
+      const req = httpTestingController.expectOne(
+        `http://localhost:3000/pokemon/${poke.id}`
+      );
+
+      expect(req.request.method).toEqual('PUT');
+
+      req.flush(pokes[0]);
     })
 
   })

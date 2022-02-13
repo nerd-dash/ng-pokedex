@@ -2,18 +2,15 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PokedexModule } from '../pokedex/pokedex.module';
-import { FETCH_SERVICE } from '../services/fetch.service.token';
-import { PokeFetchService } from '../services/poke-fetch.service';
-import { PokemonVerificationService } from '../services/pokemon-verification.service';
-import { UtilsService } from '../services/utils.service';
-import { VERIFICATION_SERVICE } from '../services/verification.service.token';
+import { GAME_STATE_SERVICE } from '../services/game-state.service.token';
+import { PokemonGameStateService } from '../services/pokemon-game-state.service';
 import { PokegameComponent } from './container/pokegame/pokegame.component';
 import { WhosThatPokemonComponent } from './container/whos-that-pokemon/whos-that-pokemon.component';
 
 @NgModule({
   declarations: [PokegameComponent, WhosThatPokemonComponent],
   providers: [
-    { provide: VERIFICATION_SERVICE, useClass: PokemonVerificationService },
+    { provide: GAME_STATE_SERVICE, useClass: PokemonGameStateService },
   ],
   imports: [CommonModule, PokedexModule, ReactiveFormsModule],
   exports: [PokegameComponent, WhosThatPokemonComponent]

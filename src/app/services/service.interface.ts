@@ -1,3 +1,1 @@
-export interface Service<T = any> {
-
-}
+export interface Service<T = any> { }

@@ -1,10 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
 import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
-import { FetchService } from 'src/app/services/fetch.service.interface';
-import { FETCH_SERVICE } from 'src/app/services/fetch.service.token';
-import { UtilsService } from 'src/app/services/utils.service';
+import { GameStateService } from 'src/app/services/game-state.service.interface';
+import { GAME_STATE_SERVICE } from 'src/app/services/game-state.service.token';
 
 
 @Component({
@@ -13,23 +11,14 @@ import { UtilsService } from 'src/app/services/utils.service';
   styleUrls: ['./pokegame.component.scss'],
 })
 export class PokegameComponent implements OnInit {
-  public randomPoke$: Observable<Pokemon> = of(EMPTY_POKEMON);
+  public randomPoke$: Observable<Pokemon | null> = of(null);
 
-  constructor(
-    @Inject(FETCH_SERVICE) private pokeFetchService: FetchService<Pokemon>, private utils: UtilsService
-  ) { }
+  constructor(@Inject(GAME_STATE_SERVICE) private gameStateService: GameStateService<Pokemon>) { }
 
   ngOnInit(): void {
-    this.randomPoke$ = this.pokeFetchService
-      .getAll$()
-      .pipe(
-        map((pokes) => this.findRandomPokemon(this.filterUnseendPokemon(pokes)))
-      );
+    this.gameStateService.getNextRound();
+    this.randomPoke$ = this.gameStateService.getRandom$;
   }
 
-  private filterUnseendPokemon = (pokes: Pokemon[]): Pokemon[] =>
-    pokes.filter((poke) => !poke.seen);
 
-  private findRandomPokemon = (pokes: Pokemon[]): Pokemon =>
-    pokes[this.utils.getRandomIndex<Pokemon>(pokes)];
 }

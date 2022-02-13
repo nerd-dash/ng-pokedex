@@ -7,6 +7,8 @@
       "type": "pwa-chrome",
       "request": "launch",
       "preLaunchTask": "npm: start",
+      "userDataDir": true,
+      "runtimeArgs": ["--auto-open-devtools-for-tabs "],
       "url": "http://localhost:4200/"
     },
     {

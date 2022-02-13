@@ -2,14 +2,15 @@ import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
 import Pokemon from 'src/app/models/Pokemon';
 import { PokeCardComponent } from 'src/app/pokedex/component/poke-card/poke-card.component';
 import { FetchService } from 'src/app/services/fetch.service.interface';
 import { FETCH_SERVICE } from 'src/app/services/fetch.service.token';
-import { VerificationService } from 'src/app/services/verification.service.interface';
-import { VERIFICATION_SERVICE } from 'src/app/services/verification.service.token';
+import { GameStateService } from 'src/app/services/game-state.service.interface';
+import { GAME_STATE_SERVICE } from 'src/app/services/game-state.service.token';
 import { PokemonFetchServiceSpy } from 'src/app/utils/testing/pokemon-fetch.service.spy';
-import { PokemonVerificationServiceSpy } from 'src/app/utils/testing/pokemon-verification.service.spy';
+import { PokemonGameStateServiceSpy } from 'src/app/utils/testing/pokemon-game-state.service.spy';
 import { pokes } from 'src/app/utils/testing/pokes';
 import { WhosThatPokemonComponent } from './whos-that-pokemon.component';
 
@@ -26,19 +27,15 @@ describe('WhosThatPokemonComponent', () => {
 
   let pokemonDebugElement: DebugElement;
   let pokeCardComponent: PokeCardComponent;
-  let pokemonVerificationServiceSpy: jasmine.SpyObj<VerificationService<Pokemon>>
-  let pokeFetchServiceSpy: jasmine.SpyObj<FetchService<Pokemon>>
+  let pokemonGameStateServiceSpy: jasmine.SpyObj<GameStateService<Pokemon>>
 
   beforeEach(async () => {
-    pokemonVerificationServiceSpy = PokemonVerificationServiceSpy.ProvideSpy();
-    pokeFetchServiceSpy = PokemonFetchServiceSpy.ProvideSpy();
-
+    pokemonGameStateServiceSpy = PokemonGameStateServiceSpy.ProvideSpy();
     await TestBed.configureTestingModule({
       declarations: [WhosThatPokemonComponent, FakePokeCardComponent],
       imports: [ReactiveFormsModule],
       providers: [
-        { provide: VERIFICATION_SERVICE, useValue: pokemonVerificationServiceSpy },
-        { provide: FETCH_SERVICE, useValue: pokeFetchServiceSpy },
+        { provide: GAME_STATE_SERVICE, useValue: pokemonGameStateServiceSpy },
       ]
     })
       .compileComponents();
@@ -47,6 +44,7 @@ describe('WhosThatPokemonComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(WhosThatPokemonComponent);
     component = fixture.componentInstance;
+    component.poke = pokes[2];
     fixture.detectChanges();
     compiled = fixture.nativeElement as HTMLElement;
     pokemonDebugElement = fixture.debugElement.query(By.directive(FakePokeCardComponent));
@@ -62,8 +60,6 @@ describe('WhosThatPokemonComponent', () => {
   });
 
   it('should pass a poke to PokeCardComponent', () => {
-    component.poke = pokes[2];
-    fixture.detectChanges();
     expect(pokeCardComponent.poke).toBe(pokes[2]);
   })
 
@@ -88,6 +84,12 @@ describe('WhosThatPokemonComponent', () => {
     onSubmitSpy.calls.reset();
   })
 
+  it('should contain a next pokemon button if the pokemon is seen', () => {
+    component.poke = { ...pokes[2], seen: true };
+    fixture.detectChanges();
+    expect(compiled.querySelector('[data-test="button-next"')).not.toBeNull();
+  })
+
   describe('onSubmit', () => {
     it('should call the pokemon verification service', () => {
 
@@ -97,13 +99,9 @@ describe('WhosThatPokemonComponent', () => {
       const toBeTested = <Pokemon>{ name: inputGuess?.value };
       component.onSubmit();
 
-      expect(pokemonVerificationServiceSpy.verify).toHaveBeenCalledTimes(1);
-      expect(pokemonVerificationServiceSpy.verify).toHaveBeenCalledWith(toBeTested, pokes[2]);
+      expect(pokemonGameStateServiceSpy.verify$).toHaveBeenCalledTimes(1);
+      expect(pokemonGameStateServiceSpy.verify$).toHaveBeenCalledWith(toBeTested, pokes[2]);
 
     });
-
-    it('should call update the pokemon to seen if verification passes', () => {
-      fail('TODO')
-    })
   })
 });
