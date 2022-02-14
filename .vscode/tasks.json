@@ -22,7 +22,7 @@
     },
     {
       "type": "npm",
-      "script": "test",
+      "script": "test --code-coverage",
       "isBackground": true,
       "problemMatcher": {
         "owner": "typescript",
