@@ -1,8 +1,8 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
-import { GameStateService } from 'src/app/services/game-state.service.interface';
-import { GAME_STATE_SERVICE } from 'src/app/services/game-state.service.token';
+import { GameStateService } from 'src/app/models/GameStateService';
+import { GAME_STATE_SERVICE } from 'src/app/tokens/game-state.service.token';
 
 @Component({
   selector: 'app-whos-that-pokemon',

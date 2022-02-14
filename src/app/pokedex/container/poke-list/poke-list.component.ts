@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
-import { FetchService } from 'src/app/services/fetch.service.interface';
-import { FETCH_SERVICE } from 'src/app/services/fetch.service.token';
+import { FetchService } from 'src/app/models/FetchService';
+import { FETCH_SERVICE } from 'src/app/tokens/fetch.service.token';
 
 @Component({
   selector: 'app-poke-list',

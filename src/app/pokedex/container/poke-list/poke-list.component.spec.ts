@@ -1,8 +1,8 @@
 import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { FetchService } from 'src/app/services/fetch.service.interface';
-import { FETCH_SERVICE } from 'src/app/services/fetch.service.token';
+import { FetchService } from 'src/app/models/FetchService';
+import { FETCH_SERVICE } from 'src/app/tokens/fetch.service.token';
 import { PokemonFetchServiceSpy } from 'src/app/utils/testing/pokemon-fetch.service.spy';
 import Pokemon, { EMPTY_POKEMON } from '../../../models/Pokemon';
 import { PokeCardComponent } from '../../component/poke-card/poke-card.component';

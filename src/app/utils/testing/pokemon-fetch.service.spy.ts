@@ -1,6 +1,6 @@
 import { of } from 'rxjs';
 import Pokemon from 'src/app/models/Pokemon';
-import { FetchService } from 'src/app/services/fetch.service.interface';
+import { FetchService } from 'src/app/models/FetchService';
 import { pokes } from './pokes';
 
 export abstract class PokemonFetchServiceSpy {

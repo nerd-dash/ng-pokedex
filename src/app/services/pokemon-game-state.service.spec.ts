@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import Pokemon, { EMPTY_POKEMON } from '../models/Pokemon';
 import { PokemonFetchServiceSpy } from '../utils/testing/pokemon-fetch.service.spy';
 import { pokes } from '../utils/testing/pokes';
-import { FetchService } from './fetch.service.interface';
-import { FETCH_SERVICE } from './fetch.service.token';
+import { FetchService } from '../models/FetchService';
+import { FETCH_SERVICE } from '../tokens/fetch.service.token';
 import { PokemonGameStateService } from './pokemon-game-state.service';
 import { UtilsService } from './utils.service';
 

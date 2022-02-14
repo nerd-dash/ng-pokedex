@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import Pokemon from '../models/Pokemon';
-import { FetchService } from './fetch.service.interface';
+import { FetchService } from '../models/FetchService';
 
 @Injectable()
 export class PokeFetchService implements FetchService<Pokemon> {

@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, of, Subject, tap } from 'rxjs';
 import Pokemon, { EMPTY_POKEMON } from '../models/Pokemon';
-import { FetchService } from './fetch.service.interface';
-import { FETCH_SERVICE } from './fetch.service.token';
-import { GameStateService } from './game-state.service.interface';
+import { FetchService } from '../models/FetchService';
+import { FETCH_SERVICE } from '../tokens/fetch.service.token';
+import { GameStateService } from '../models/GameStateService';
 import { UtilsService } from './utils.service';
 
 @Injectable()

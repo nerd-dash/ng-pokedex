@@ -1,6 +1,6 @@
 import { of } from "rxjs";
 import Pokemon from "src/app/models/Pokemon";
-import { GameStateService } from "src/app/services/game-state.service.interface";
+import { GameStateService } from "src/app/models/GameStateService";
 
 export abstract class PokemonGameStateServiceSpy {
   public static ProvideSpy = (): jasmine.SpyObj<GameStateService<Pokemon>> => {

@@ -1,5 +1,5 @@
 import { Observable } from "rxjs";
-import { Service } from "./service.interface";
+import { Service } from "./Service";
 
 export interface GameStateService<T = any> extends Service {
     getRandom$: Observable<T>;

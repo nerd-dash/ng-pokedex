@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import { GameStateService } from './game-state.service.interface';
+import { GameStateService } from '../models/GameStateService';
 
 
 export const GAME_STATE_SERVICE = new InjectionToken<GameStateService>('verification-service');

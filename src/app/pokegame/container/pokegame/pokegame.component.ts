@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
-import { GameStateService } from 'src/app/services/game-state.service.interface';
-import { GAME_STATE_SERVICE } from 'src/app/services/game-state.service.token';
+import { GameStateService } from 'src/app/models/GameStateService';
+import { GAME_STATE_SERVICE } from 'src/app/tokens/game-state.service.token';
 
 
 @Component({
