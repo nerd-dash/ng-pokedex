@@ -1,12 +1,14 @@
 <div data-test="poke-card-content">
-  <app-seen-poke-card
-    *ngIf="poke.seen"
-    [poke]="poke"
-    data-test="poke-seen"
-  ></app-seen-poke-card>
-  <app-unseen-poke-card
-    *ngIf="!poke.seen"
-    [poke]="poke"
-    data-test="poke-unseen"
-  ></app-unseen-poke-card>
+  <ng-container *ngIf="poke.seen; else unseen">
+    <app-seen-poke-card
+      [poke]="poke"
+      data-test="poke-seen"
+    ></app-seen-poke-card>
+  </ng-container>
+  <ng-template #unseen>
+    <app-unseen-poke-card
+      [poke]="poke"
+      data-test="poke-unseen"
+    ></app-unseen-poke-card>
+  </ng-template>
 </div>

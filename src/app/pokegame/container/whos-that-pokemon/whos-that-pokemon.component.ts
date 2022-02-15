@@ -24,11 +24,11 @@ export class WhosThatPokemonComponent implements WhosThatPokemonInterface, OnIni
 
   public onSubmit = () => {
     const toBeTested = <Pokemon>{ name: this.inputGuess.value };
-    this.pokemonGameStateService.verify$(toBeTested, this.poke);
+    this.pokemonGameStateService.verify$(toBeTested, this.poke).subscribe();
   }
 
-  public nextPokemon= () => {
-    this.pokemonGameStateService.getNextRound();
+  public nextPokemon = () => {
+    this.pokemonGameStateService.getNextRound$().subscribe();
   };
 
 

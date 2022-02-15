@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, finalize, map, Observable, of, tap } from 'rxjs';
 import { FetchService } from '../models/FetchService';
 import { GameStateService } from '../models/GameStateService';
 import Pokemon, { EMPTY_POKEMON } from '../models/Pokemon';
@@ -16,22 +16,19 @@ export class PokemonGameStateService implements GameStateService<Pokemon> {
     @Inject(FETCH_SERVICE) private pokeFetchService: FetchService<Pokemon>
   ) {}
 
-  getNextRound = () => {
+  getNextRound$ = () =>
     this.pokeFetchService
       .getNextRandom$()
-      .subscribe((randomPokemon) => this.getRandomPokemon.next(randomPokemon));
-  };
+      .pipe(tap((poke) => this.getRandomPokemon.next(poke)), finalize(() => console.log('completed getNextRound$')));
 
   verify$ = (toBeTested: Partial<Pokemon>, verified: Pokemon) => {
     if (this.verify(toBeTested, verified)) {
       const seenPoke: Pokemon = { ...this.getRandomPokemon.value, seen: true };
       this.getRandomPokemon.next(seenPoke);
-      this.pokeFetchService.put$(seenPoke).subscribe();
-      return of(true);
+      return this.pokeFetchService.put$(seenPoke).pipe(map(() => true), finalize(() => console.log('completed verify$')));
     }
-    this.getNextRound();
 
-    return of(false);
+    return this.getNextRound$().pipe(map(() => false));
   };
 
   private verify = (toBeTested: Partial<Pokemon>, verified: Pokemon): boolean =>

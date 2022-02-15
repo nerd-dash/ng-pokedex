@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, shareReplay } from 'rxjs';
+import { finalize, map, multicast, Observable, of, shareReplay, Subject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FetchService } from '../models/FetchService';
 import Pokemon, { EMPTY_POKEMON } from '../models/Pokemon';
@@ -29,20 +29,20 @@ export class PokeFetchService implements FetchService<Pokemon> {
         observe: 'response',
       })
       .pipe(
-        shareReplay({ bufferSize: 100, refCount: true }),
         map((response) => {
           const count =
             response.headers.get(environment.COUNT_HEADER_NAME) ||
             `${environment.INTIAL_UNSEEN_POKE_COUNT}`;
           this.unseenPokemonCount = +count;
           return response.body || [EMPTY_POKEMON];
-        })
+        }),
+        finalize(() => console.log('completed getAll$'))
       );
 
   put$ = (entity: Pokemon) =>
     this.httpClient.put<Pokemon>(`${this.POKE_SERVER_BASE_URL}/${entity.id}`, {
       ...entity,
-    });
+    }).pipe(finalize(() => console.log('completed put$')));
 
   getNextRandom$ = () => {
     const params = this.unseenPokeHttpParams.set(
