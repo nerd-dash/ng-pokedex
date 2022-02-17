@@ -1,6 +1,5 @@
-# Things to add on the project
+# Things to add to the issue tracker
 
-- [ ] https://github.com/nerd-dash/ng-pokedex/issues/1
 - [ ] Some kinda of authentication and authorization
 - [ ] Navigation
 - [ ] Some Sass? :D 
