@@ -6,10 +6,14 @@ import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
   templateUrl: './poke-card.component.html',
   styleUrls: ['./poke-card.component.scss'],
 })
-export class PokeCardComponent implements OnInit {
+export class PokeCardComponent implements OnInit, PokeCardComponentInterface {
   @Input() public poke: Pokemon = EMPTY_POKEMON;
 
   constructor() {}
 
   ngOnInit(): void {}
+}
+
+export interface PokeCardComponentInterface {
+  poke: Pokemon;
 }

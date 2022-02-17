@@ -1,13 +1,15 @@
 import { Service } from '../models/Service';
 
 export class UtilsService implements Service {
-  getRandomIndex = <T>(array: Array<T>): number =>
-    this.getRandomNumber(array.length);
+  getRandomItem = <T>(array: Array<T>): T =>
+    array[this.getRandomNumber(array.length)];
 
   getRandomNumber = (maximun: number, minimun = 0) =>
     Math.floor(Math.random() * maximun - minimun + minimun);
 
-  static ProvideSpy = () => ({
-    getRandomIndex: () => 0,
-  });
+  hasTheSameName = <T extends { name: string }>(
+    toBeTested: Partial<T>,
+    verified: T
+  ): boolean =>
+    toBeTested.name?.toLocaleLowerCase() === verified.name.toLocaleLowerCase();
 }

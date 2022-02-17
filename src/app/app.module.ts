@@ -8,8 +8,8 @@ import { UtilsService } from './services/utils.service';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, PokedexModule, PokegameModule],
+  imports: [BrowserModule, AppRoutingModule, PokegameModule, PokedexModule],
   providers: [UtilsService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

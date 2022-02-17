@@ -8,11 +8,13 @@ export abstract class PokemonFetchServiceSpy {
     const pokeServiceSpy = jasmine.createSpyObj<FetchService<Pokemon>>([
       'getAll$',
       'get$',
-      'put$'
+      'put$',
+      'getNextRandom$'
     ]);
     pokeServiceSpy.getAll$.and.returnValue(of(pokes));
     pokeServiceSpy.get$.and.returnValue(of(pokes[0]));
     pokeServiceSpy.put$.and.returnValue(of(pokes[0]));
+    pokeServiceSpy.getNextRandom$.and.returnValue(of(pokes[0]));
 
     return pokeServiceSpy;
   };

@@ -1,8 +1,19 @@
 <app-poke-card data-test="poke-card" [poke]="poke"></app-poke-card>
 <form data-test="form-guess" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-    <label for="input-guess">
-        <input name="input-guess" data-test="input-guess" type="text" formControlName="inputGuess">
-    </label>
-    <button *ngIf="!poke.seen" data-test="button-guess" type="submit">Go Pokeball!!!</button>
-    <button *ngIf="poke.seen" data-test="button-next" (click)="nextPokemon()">Next Pokemon</button>
+  <label for="input-guess">
+    <input
+      name="input-guess"
+      data-test="input-guess"
+      type="text"
+      formControlName="inputGuess"
+    />
+  </label>
+  <ng-container *ngIf="poke.seen; else unseen">
+    <button data-test="button-next" (click)="nextPokemon()">
+      Next Pokemon
+    </button>
+  </ng-container>
+  <ng-template #unseen>
+    <button data-test="button-guess" type="submit">Go Pokeball!!!</button>
+  </ng-template>
 </form>

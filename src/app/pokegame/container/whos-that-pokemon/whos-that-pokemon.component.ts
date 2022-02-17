@@ -1,42 +1,45 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
 import { GameStateService } from 'src/app/models/GameStateService';
+import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
 import { GAME_STATE_SERVICE } from 'src/app/tokens/game-state.service.token';
 
 @Component({
   selector: 'app-whos-that-pokemon',
   templateUrl: './whos-that-pokemon.component.html',
-  styleUrls: ['./whos-that-pokemon.component.scss']
+  styleUrls: ['./whos-that-pokemon.component.scss'],
 })
-export class WhosThatPokemonComponent implements WhosThatPokemonInterface, OnInit {
+export class WhosThatPokemonComponent
+  implements WhosThatPokemonInterface, OnInit
+{
   @Input() public poke: Pokemon = EMPTY_POKEMON;
 
-  private inputGuess = new FormControl('', Validators.required)
+  private inputGuess = new FormControl('', Validators.required);
 
   public formGroup: FormGroup = new FormGroup({
-    inputGuess: this.inputGuess
-  })
+    inputGuess: this.inputGuess,
+  });
 
-  constructor(@Inject(GAME_STATE_SERVICE) private pokemonGameStateService: GameStateService<Pokemon>) { }
+  constructor(
+    @Inject(GAME_STATE_SERVICE)
+    private pokemonGameStateService: GameStateService<Pokemon>
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   public onSubmit = () => {
     const toBeTested = <Pokemon>{ name: this.inputGuess.value };
-    this.pokemonGameStateService.verify$(toBeTested, this.poke).subscribe();
-  }
-
-  public nextPokemon = () => {
-    this.pokemonGameStateService.getNextRound$().subscribe();
+    this.pokemonGameStateService.verifyItems(toBeTested, this.poke);
   };
 
-
+  public nextPokemon = () => {
+    this.pokemonGameStateService.getNextItem();
+  };
 }
 
 export interface WhosThatPokemonInterface {
-  poke: Pokemon,
-  formGroup: FormGroup,
-  onSubmit: () => void,
-  nextPokemon: () => void,
+  poke: Pokemon;
+  formGroup: FormGroup;
+  onSubmit: () => void;
+  nextPokemon: () => void;
 }

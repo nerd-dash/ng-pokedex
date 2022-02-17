@@ -10,7 +10,7 @@ import { GAME_STATE_SERVICE } from 'src/app/tokens/game-state.service.token';
   styleUrls: ['./pokegame.component.scss'],
 })
 export class PokegameComponent implements OnInit {
-  public randomPoke$: Observable<Pokemon> = of(EMPTY_POKEMON);
+  public randomPoke$: Observable<Pokemon> = of();
   public EMPTY_POKEMON = EMPTY_POKEMON;
 
   constructor(
@@ -19,7 +19,6 @@ export class PokegameComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.gameStateService.getNextRound$().subscribe();
-    this.randomPoke$ = this.gameStateService.getRandom$;
+    this.randomPoke$ = this.gameStateService.getItem$();
   }
 }

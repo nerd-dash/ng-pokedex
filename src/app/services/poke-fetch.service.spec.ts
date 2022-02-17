@@ -1,9 +1,10 @@
 import {
   HttpClientTestingModule,
-  HttpTestingController,
+  HttpTestingController
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import Pokemon, { EMPTY_POKEMON } from '../models/Pokemon';
+import { environment } from 'src/environments/environment';
+import Pokemon from '../models/Pokemon';
 import { pokes } from '../utils/testing/pokes';
 import { PokeFetchService } from './poke-fetch.service';
 
@@ -35,7 +36,7 @@ describe('PokeFetchService', () => {
       });
 
       const req = httpTestingController.expectOne(
-        'http://localhost:3000/pokemon'
+        `${environment.POKE_SERVER_BASE_URL}`
       );
 
       expect(req.request.method).toEqual('GET');
@@ -52,7 +53,7 @@ describe('PokeFetchService', () => {
       });
 
       const req = httpTestingController.expectOne(
-        `http://localhost:3000/pokemon/${id}`
+        `${environment.POKE_SERVER_BASE_URL}/${id}`
       );
 
       expect(req.request.method).toEqual('GET');
@@ -63,20 +64,18 @@ describe('PokeFetchService', () => {
 
   describe('put$', () => {
     it('should make a PUT request to pokmeon api update', () => {
-
-      const poke : Pokemon = {... pokes[2], seen: true}
+      const poke: Pokemon = { ...pokes[2], seen: true };
       service.put$(poke).subscribe((pokemon) => {
         expect(pokemon).toBe(pokes[0]);
       });
 
       const req = httpTestingController.expectOne(
-        `http://localhost:3000/pokemon/${poke.id}`
+        `${environment.POKE_SERVER_BASE_URL}/${poke.id}`
       );
 
       expect(req.request.method).toEqual('PUT');
 
       req.flush(pokes[0]);
-    })
-
-  })
+    });
+  });
 });
