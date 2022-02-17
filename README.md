@@ -1,6 +1,6 @@
 # Things to add on the project
 
-- [ ] Lazy Loading
+- [ ] https://github.com/nerd-dash/ng-pokedex/issues/1
 - [ ] Some kinda of authentication and authorization
 - [ ] Navigation
 - [ ] Some Sass? :D 
