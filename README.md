@@ -1,5 +1,9 @@
-Shit to be done on this project yet.
+# Things to add on the project
 
-[] Some kinda of authentication and authorization
-[] Navigation
-[] Some Sass? :D 
+- [ ] Lazy Loading
+- [ ] Some kinda of authentication and authorization
+- [ ] Navigation
+- [ ] Some Sass? :D 
+- [ ] Make it compatible with [PokeAPI](https://pokeapi.co/)
+- [ ] Create Issues
+- [ ] Create Actions
