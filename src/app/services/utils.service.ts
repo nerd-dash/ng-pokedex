@@ -1,5 +1,8 @@
+import { Injectable } from '@angular/core';
 import { Service } from '../models/Service';
-
+@Injectable({
+  providedIn: 'root',
+})
 export class UtilsService implements Service {
   getRandomItem = <T>(array: Array<T>): T =>
     array[this.getRandomNumber(array.length)];
