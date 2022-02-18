@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { PokedexModule } from './pokedex/pokedex.module';
 import { PokegameModule } from './pokegame/pokegame.module';
 import { UtilsService } from './services/utils.service';
-
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, PokegameModule, PokedexModule],
