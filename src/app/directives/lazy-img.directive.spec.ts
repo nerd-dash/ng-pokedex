@@ -12,8 +12,11 @@ class IntersectionObserver {
     };
   };
 
-  constructor(private callback: (entries: Array<any>) => void, options: any) {}
-  observe = jasmine.createSpy('observe').and.callFake((entrie: any) => {
+  constructor(
+    private callback: (entries: IntersectionObserverEntry[]) => void,
+    options: IntersectionObserverInit
+  ) {}
+  observe = jasmine.createSpy('observe').and.callFake((entrie: Element) => {
     this.callback([this.entrieFactory(entrie)]);
   });
 }
@@ -26,8 +29,8 @@ class IntersectionObserver {
 })
 class TestComponent {
   constructor() {}
-  lazySource = '/lazySource';
-  src = '../source';
+  lazySource = '/assets/img/pokeball.svg';
+  src = 'http://source/';
 }
 
 describe('LazyImgDirective', () => {
@@ -47,10 +50,14 @@ describe('LazyImgDirective', () => {
     expect(component).toBeDefined();
   });
 
-  it('should have replaced the src with the lazy source', () => {
+  it('should have replaced the src with the lazy source', (done) => {
     const debugEl: HTMLElement = fixture.debugElement.nativeElement;
     const img: HTMLImageElement | null = debugEl.querySelector('img');
     fixture.detectChanges();
-    expect(img?.src).toBe('http://localhost:9876/lazySource');
+    fixture.whenRenderingDone().then(()=>{
+
+      expect(img?.src).toContain('pokeball.svg');
+      done();
+    })
   });
 });
