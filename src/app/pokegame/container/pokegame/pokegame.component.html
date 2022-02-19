@@ -1,11 +1,2 @@
-<ng-container *ngIf="randomPoke$ | async as poke">
-  <ng-container *ngIf="poke !== EMPTY_POKEMON; else loading">
-    <app-whos-that-pokemon
-      data-test="whos-that-poke"
-      [poke]="poke"
-    ></app-whos-that-pokemon>
-  </ng-container>
-  <ng-template #loading
-    ><span data-test="loading">Loading Pokemon</span></ng-template
-  >
-</ng-container>
+<app-navbar></app-navbar>
+<router-outlet data-test="router-outlet"></router-outlet>
