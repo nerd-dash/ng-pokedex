@@ -33,7 +33,7 @@ describe('WhosThatPokemonComponent', () => {
     >({
       verifyItems: false,
       getItem$: of(pokes[0]),
-      getNextItem : console.log(),
+      getNextItem : undefined,
     });
 
     await TestBed.configureTestingModule({
