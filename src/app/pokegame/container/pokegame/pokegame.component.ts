@@ -1,8 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { GameStateService } from 'src/app/models/GameStateService';
-import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
-import { GAME_STATE_SERVICE } from 'src/app/tokens/game-state.service.token';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-pokegame',
@@ -10,15 +6,7 @@ import { GAME_STATE_SERVICE } from 'src/app/tokens/game-state.service.token';
   styleUrls: ['./pokegame.component.scss'],
 })
 export class PokegameComponent implements OnInit {
-  public randomPoke$: Observable<Pokemon> = of();
-  public EMPTY_POKEMON = EMPTY_POKEMON;
+  constructor() {}
 
-  constructor(
-    @Inject(GAME_STATE_SERVICE)
-    private gameStateService: GameStateService<Pokemon>
-  ) {}
-
-  ngOnInit(): void {
-    this.randomPoke$ = this.gameStateService.getItem$();
-  }
+  ngOnInit(): void {}
 }

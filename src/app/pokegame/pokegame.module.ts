@@ -10,6 +10,8 @@ import { GAME_STATE_SERVICE } from '../tokens/game-state.service.token';
 import { PokegameComponent } from './container/pokegame/pokegame.component';
 import { WhosThatPokemonComponent } from './container/whos-that-pokemon/whos-that-pokemon.component';
 import { PokegameRoutingModule } from './pokegame-routing.module';
+import { RandomPokemonComponent } from './container/random-pokemon/random-pokemon.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 @NgModule({
   imports: [
@@ -19,7 +21,12 @@ import { PokegameRoutingModule } from './pokegame-routing.module';
     HttpClientModule,
     PokegameRoutingModule,
   ],
-  declarations: [PokegameComponent, WhosThatPokemonComponent],
+  declarations: [
+    PokegameComponent,
+    WhosThatPokemonComponent,
+    RandomPokemonComponent,
+    NavbarComponent,
+  ],
   providers: [
     {
       provide: GAME_STATE_SERVICE,
@@ -29,6 +36,6 @@ import { PokegameRoutingModule } from './pokegame-routing.module';
       provide: FETCH_SERVICE,
       useExisting: PokeFetchService,
     },
-  ],
+  ]
 })
 export class PokegameModule {}

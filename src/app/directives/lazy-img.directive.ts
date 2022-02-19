@@ -12,7 +12,7 @@ export class LazyImgDirective {
     const options: IntersectionObserverInit = {
       threshold: 1,
     };
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
       this.substituteSrc(entries, observer, src);
     }, options);
 

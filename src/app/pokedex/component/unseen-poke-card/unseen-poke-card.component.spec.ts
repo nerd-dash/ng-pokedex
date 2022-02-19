@@ -1,4 +1,6 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserTestingModule } from '@angular/platform-browser/testing';
 import Pokemon from 'src/app/models/Pokemon';
 import { UnseenPokeCardComponent } from './unseen-poke-card.component';
 
@@ -26,6 +28,8 @@ describe('UnseenPokeCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [UnseenPokeCardComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [BrowserTestingModule],
     }).compileComponents();
   });
 

@@ -1,7 +1,6 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import Pokemon from 'src/app/models/Pokemon';
-
 import { SeenPokeCardComponent } from './seen-poke-card.component';
 
 describe('SeenPokeCardComponent', () => {
@@ -28,6 +27,7 @@ describe('SeenPokeCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SeenPokeCardComponent],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   });
 
