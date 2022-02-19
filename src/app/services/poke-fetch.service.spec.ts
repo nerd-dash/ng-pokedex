@@ -18,7 +18,7 @@ describe('PokeFetchService', () => {
       providers: [PokeFetchService],
     });
     service = TestBed.inject(PokeFetchService);
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   afterEach(() => {
@@ -29,7 +29,7 @@ describe('PokeFetchService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('getAll', () => {
+  describe('getAll$', () => {
     it('should make a GET request to pokemon Json and return an observable with all pokemon data', () => {
       service.getAll$().subscribe((pokemons) => {
         expect(pokemons).toBe(pokes);

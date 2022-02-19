@@ -1,7 +1,8 @@
-interface Pokemon {
-  id: number;
+import { Identificable } from './Identificable';
+import { Revealable } from './Revealable';
+
+interface Pokemon extends Identificable, Revealable {
   image: string;
-  seen: boolean;
   name: string;
   type: string[];
   base: {
