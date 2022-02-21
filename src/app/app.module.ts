@@ -5,8 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PokeFetchService } from './services/poke-fetch.service';
 import { PokemonGameStateService } from './services/pokemon-game-state.service';
+import { PublishableUserService } from './services/publishable-user.service';
 import { FETCH_SERVICE } from './tokens/fetch.service.token';
 import { GAME_STATE_SERVICE } from './tokens/game-state.service.token';
+import { PUBLISHABLE_SERVICE } from './tokens/publishable-service-token';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
@@ -15,6 +17,10 @@ import { GAME_STATE_SERVICE } from './tokens/game-state.service.token';
     {
       provide: GAME_STATE_SERVICE,
       useExisting: PokemonGameStateService,
+    },
+    {
+      provide: PUBLISHABLE_SERVICE,
+      useExisting: PublishableUserService,
     },
     {
       provide: FETCH_SERVICE,
