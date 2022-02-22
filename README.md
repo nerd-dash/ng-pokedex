@@ -1,5 +1,5 @@
 # My playground for (re) learning Angular.
 
 `npm install`  
-`npm pokeserver`  
+`npm run pokeserver`  
 `ng serve` 
