@@ -1,13 +1,17 @@
 import { Inject, Injectable } from '@angular/core';
+import { zip } from 'rxjs';
 import { FetchService } from '../models/FetchService';
 import { GameState } from '../models/GameState';
 import { GameStateService } from '../models/GameStateService';
+import { PokedexEntry } from '../models/PokedexEntry';
 import Pokemon, { EMPTY_POKEMON } from '../models/Pokemon';
-import { FETCH_SERVICE } from '../tokens/fetch.service.token';
+import { Sighting } from '../models/Sighting';
+import { POKEMON_FETCH_SERVICE } from '../tokens/fetch/pokemon-fetch-service.token';
+import { SIGHTING_GAME_STATE_SERVICE } from '../tokens/game-state/sighting-game-state-service.token';
 import { StateService } from './state.service';
 import { UtilsService } from './utils.service';
 
-const initialState: GameState<Pokemon> = {
+const initialState: GameState<PokedexEntry> = {
   allItems: [],
   item: EMPTY_POKEMON,
 };
@@ -16,11 +20,14 @@ const initialState: GameState<Pokemon> = {
   providedIn: 'root',
 })
 export class PokemonGameStateService
-  extends StateService<GameState<Pokemon>>
-  implements GameStateService<Pokemon>
+  extends StateService<GameState<PokedexEntry>>
+  implements GameStateService<PokedexEntry>
 {
   constructor(
-    @Inject(FETCH_SERVICE) private pokeFetchService: FetchService<Pokemon>,
+    @Inject(POKEMON_FETCH_SERVICE)
+    private pokemonFetchService: FetchService<Pokemon>,
+    @Inject(SIGHTING_GAME_STATE_SERVICE)
+    private sightingGameStateService: GameStateService<Sighting>,
     private utilService: UtilsService
   ) {
     super(initialState);
@@ -31,13 +38,14 @@ export class PokemonGameStateService
 
   getAllItems$ = () => this.select((state) => state.allItems);
 
-  verifyItems = (toBeTested: Partial<Pokemon>, verified: Pokemon) => {
-    if (this.utilService.hasTheSameName<Pokemon>(toBeTested, verified)) {
-      const seenPoke: Pokemon = {
-        ...this.state.item,
-        seen: true,
-      };
-      this.updateSeenPokemon(seenPoke);
+  verifyItems = (toBeTested: Partial<PokedexEntry>) => {
+    if (
+      this.utilService.hasTheSameName<PokedexEntry>(toBeTested, this.state.item)
+    ) {
+      this.updateSeenPokemon(this.state.item);
+      this.sightingGameStateService
+        .updateItem$({ id: 0, pokemonId: this.state.item.id })
+        .subscribe();
       return true;
     }
 
@@ -48,8 +56,21 @@ export class PokemonGameStateService
   getNextItem = () => this.getRandomUnseen();
 
   private init = (): void => {
-    this.pokeFetchService.getAll$().subscribe((allItems) => {
-      this.setState({ allItems });
+    const pokedexEntries$ = zip(
+      this.pokemonFetchService.getAll$(),
+      this.sightingGameStateService.getAllItems$()
+    );
+    pokedexEntries$.subscribe((entries) => {
+      const [pokemons, sightings] = entries;
+      const allItems = this.convertPokemonToPokedexEntries({
+        pokemons,
+        sightings,
+      });
+      this.setState({
+        ...this.state,
+        allItems,
+      });
+
       this.getRandomUnseen();
     });
   };
@@ -57,16 +78,30 @@ export class PokemonGameStateService
   private getRandomUnseen = () => {
     const unseenPokemons = this.state.allItems.filter((poke) => !poke.seen);
     const item = this.utilService.getRandomItem(unseenPokemons);
-    this.setState({ item });
+    this.setState({ ...this.state, item });
   };
 
-  private updateSeenPokemon = (seenPokemon: Pokemon) => {
+  updateItem$ = (item: PokedexEntry) => this.pokemonFetchService.put$(item);
+
+  private convertPokemonToPokedexEntries = ({
+    pokemons,
+    sightings,
+  }: {
+    pokemons: Pokemon[];
+    sightings: Sighting[];
+  }): PokedexEntry[] =>
+    pokemons.map((poke) =>
+      sightings.find((sigh) => sigh.pokemonId === poke.id)
+        ? { ...poke, seen: true }
+        : { ...poke, seen: false }
+    );
+
+  private updateSeenPokemon = (item: PokedexEntry) => {
     this.setState({
-      item: seenPokemon,
+      item: item,
       allItems: this.state.allItems.map((poke) =>
-        seenPokemon.id === poke.id ? seenPokemon : poke
+        item.id === poke.id ? item : poke
       ),
     });
-    this.pokeFetchService.put$(seenPokemon).subscribe();
   };
 }
