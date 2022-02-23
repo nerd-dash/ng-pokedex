@@ -2,17 +2,17 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AccessToken } from '../models/AccessToken';
 import { PublishableService } from '../models/PublishableService';
 import { User } from '../models/User';
-import { PUBLISHABLE_SERVICE } from '../tokens/publishable-service-token';
-import { PokeAuthService } from './poke-auth.service';
+import { PUBLISHABLE_SERVICE } from '../tokens/publishable-service.token';
+import { UserAuthService } from './user-auth.service';
 
-describe('PokeAuthService', () => {
-  let service: PokeAuthService;
+describe('UserAuthService', () => {
+  let service: UserAuthService;
   let httpTestingController: HttpTestingController;
   let publishiableServiceSpy: jasmine.SpyObj<PublishableService<User>>;
 
@@ -35,12 +35,12 @@ describe('PokeAuthService', () => {
 
     TestBed.configureTestingModule({
       providers: [
-        PokeAuthService,
+        UserAuthService,
         { provide: PUBLISHABLE_SERVICE, useValue: publishiableServiceSpy },
       ],
       imports: [HttpClientTestingModule],
     });
-    service = TestBed.inject(PokeAuthService);
+    service = TestBed.inject(UserAuthService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 

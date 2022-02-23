@@ -6,12 +6,12 @@ import { AccessToken } from '../models/AccessToken';
 import { AuthService } from '../models/AuthService';
 import { PublishableService } from '../models/PublishableService';
 import { User } from '../models/User';
-import { PUBLISHABLE_SERVICE } from '../tokens/publishable-service-token';
+import { PUBLISHABLE_SERVICE } from '../tokens/publishable-service.token';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PokeAuthService implements AuthService<User, AccessToken<User>> {
+export class UserAuthService implements AuthService<User, AccessToken<User>> {
   constructor(
     @Inject(PUBLISHABLE_SERVICE) private publishable: PublishableService<User>,
     private httpClient: HttpClient
