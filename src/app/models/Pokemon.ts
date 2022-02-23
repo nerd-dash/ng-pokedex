@@ -1,8 +1,7 @@
 import { Identificable } from './Identificable';
 import { Ownable } from './Ownable';
-import { Revealable } from './Revealable';
 
-interface Pokemon extends Identificable, Revealable, Ownable {
+interface Pokemon extends Identificable, Ownable {
   image: string;
   name: string;
   type: string[];

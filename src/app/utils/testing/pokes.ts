@@ -1,3 +1,4 @@
+import { PokedexEntry } from 'src/app/models/PokedexEntry';
 import Pokemon from 'src/app/models/Pokemon';
 
 export const pokes: Pokemon[] = [
@@ -5,7 +6,6 @@ export const pokes: Pokemon[] = [
     id: 1,
     image:
       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-    seen: false,
     name: 'Bulbasaur',
     type: ['Grass', 'Poison'],
     base: {
@@ -21,7 +21,6 @@ export const pokes: Pokemon[] = [
     id: 2,
     image:
       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png',
-    seen: true,
     name: 'Ivysaur',
     type: ['Grass', 'Poison'],
     base: {
@@ -37,7 +36,6 @@ export const pokes: Pokemon[] = [
     id: 3,
     image:
       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png',
-    seen: false,
     name: 'Venusaur',
     type: ['Grass', 'Poison'],
     base: {
@@ -53,7 +51,6 @@ export const pokes: Pokemon[] = [
     id: 4,
     image:
       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png',
-    seen: true,
     name: 'Charmander',
     type: ['Fire'],
     base: {
@@ -66,3 +63,8 @@ export const pokes: Pokemon[] = [
     },
   },
 ];
+
+export const pokedexEntries: PokedexEntry[] = pokes.map((poke) => ({
+  ...poke,
+  seen: false,
+}));
