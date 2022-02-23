@@ -1,6 +1,6 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
+import { EMPTY_POKEDEX_ENTRY, PokedexEntry } from 'src/app/models/PokedexEntry';
 import { PokeCardComponent } from './poke-card.component';
 
 describe('PokeCardComponent', () => {
@@ -8,7 +8,7 @@ describe('PokeCardComponent', () => {
   let fixture: ComponentFixture<PokeCardComponent>;
   let compiled: HTMLElement;
 
-  let pokemon: Pokemon = {
+  let pokemon: PokedexEntry = {
     id: 1,
     image: 'image/address',
     name: 'My Pokemon',
@@ -44,7 +44,7 @@ describe('PokeCardComponent', () => {
   });
 
   it(`should display some pokemon info`, () => {
-    expect(component.poke).not.toEqual(EMPTY_POKEMON);
+    expect(component.poke).not.toEqual(EMPTY_POKEDEX_ENTRY);
   });
 
   it('should hold a pokemon card content', () => {
