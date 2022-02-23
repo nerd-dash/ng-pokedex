@@ -1,6 +1,6 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import Pokemon from 'src/app/models/Pokemon';
+import { PokedexEntry } from 'src/app/models/PokedexEntry';
 import { SeenPokeCardComponent } from './seen-poke-card.component';
 
 describe('SeenPokeCardComponent', () => {
@@ -8,7 +8,7 @@ describe('SeenPokeCardComponent', () => {
   let fixture: ComponentFixture<SeenPokeCardComponent>;
   let compiled: HTMLElement;
 
-  let pokemon: Pokemon = {
+  let pokemon: PokedexEntry = {
     id: 1,
     image: 'image/address',
     name: 'My Pokemon',

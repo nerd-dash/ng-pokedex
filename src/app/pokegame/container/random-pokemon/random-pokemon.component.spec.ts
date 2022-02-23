@@ -9,9 +9,10 @@ import { FormGroup } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
 import { GameStateService } from 'src/app/models/GameStateService';
-import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
-import { GAME_STATE_SERVICE } from 'src/app/tokens/game-state.service.token';
-import { pokes } from 'src/app/utils/testing/pokes';
+import { EMPTY_POKEDEX_ENTRY } from 'src/app/models/PokedexEntry';
+import Pokemon from 'src/app/models/Pokemon';
+import { POKEMON_GAME_STATE_SERVICE } from 'src/app/tokens/game-state/pokemon-game-state-service.token';
+import { pokedexEntries } from 'src/app/utils/testing/pokes';
 import { WhosThatPokemonInterface } from '../whos-that-pokemon/whos-that-pokemon.component';
 import { RandomPokemonComponent } from './random-pokemon.component';
 
@@ -20,7 +21,7 @@ import { RandomPokemonComponent } from './random-pokemon.component';
   template: '',
 })
 class FakeWhosThatPokemonComponent implements WhosThatPokemonInterface {
-  @Input() poke = EMPTY_POKEMON;
+  @Input() pokedexEntry = EMPTY_POKEDEX_ENTRY;
   formGroup = new FormGroup({});
   onSubmit = () => {};
   nextPokemon = () => {};
@@ -36,7 +37,7 @@ describe('RandomPokemonComponent', () => {
 
   let pokemonGameStateServiceSpy: jasmine.SpyObj<GameStateService<Pokemon>>;
 
-  const bulbasaur = pokes[0];
+  const bulbasaur = pokedexEntries[0];
 
   beforeEach(async () => {
     pokemonGameStateServiceSpy = jasmine.createSpyObj<
@@ -48,7 +49,7 @@ describe('RandomPokemonComponent', () => {
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         {
-          provide: GAME_STATE_SERVICE,
+          provide: POKEMON_GAME_STATE_SERVICE,
           useValue: pokemonGameStateServiceSpy,
         },
       ],
@@ -74,8 +75,8 @@ describe('RandomPokemonComponent', () => {
 
   it('should fetch a randon not seen pokemon', () => {
     component.randomPoke$.subscribe((randomPoke) => {
-      expect(randomPoke).not.toEqual(EMPTY_POKEMON);
-      expect(randomPoke).toBe(pokes[0]);
+      expect(randomPoke).not.toEqual(EMPTY_POKEDEX_ENTRY);
+      expect(randomPoke).toBe(pokedexEntries[0]);
     });
   });
 
@@ -86,11 +87,11 @@ describe('RandomPokemonComponent', () => {
   });
 
   it('should pass a random pokemon to whos that poke component', () => {
-    expect(childComponent.poke).toBe(pokes[0]);
+    expect(childComponent.pokedexEntry).toBe(pokedexEntries[0]);
   });
 
   it('should show a loading while no pokemon has loaded', () => {
-    component.randomPoke$ = of(EMPTY_POKEMON);
+    component.randomPoke$ = of(EMPTY_POKEDEX_ENTRY);
     fixture.detectChanges();
     expect(compiled.querySelector('[data-test="loading"]')).not.toBeNull();
   });

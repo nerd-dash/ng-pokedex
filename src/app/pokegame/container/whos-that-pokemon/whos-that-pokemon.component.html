@@ -1,4 +1,4 @@
-<app-poke-card data-test="poke-card" [poke]="poke"></app-poke-card>
+<app-poke-card data-test="poke-card" [poke]="pokedexEntry"></app-poke-card>
 <form data-test="form-guess" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <label for="input-guess">
     <input
@@ -8,7 +8,7 @@
       formControlName="inputGuess"
     />
   </label>
-  <ng-container *ngIf="poke.seen; else unseen">
+  <ng-container *ngIf="pokedexEntry.seen; else unseen">
     <button data-test="button-next" (click)="nextPokemon()">
       Next Pokemon
     </button>

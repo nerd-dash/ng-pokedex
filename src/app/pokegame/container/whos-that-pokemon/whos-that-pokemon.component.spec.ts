@@ -4,10 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
 import { GameStateService } from 'src/app/models/GameStateService';
-import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
+import { EMPTY_POKEDEX_ENTRY, PokedexEntry } from 'src/app/models/PokedexEntry';
+import Pokemon from 'src/app/models/Pokemon';
 import { PokeCardComponentInterface } from 'src/app/pokedex/component/poke-card/poke-card.component';
-import { GAME_STATE_SERVICE } from 'src/app/tokens/game-state.service.token';
-import { pokes } from 'src/app/utils/testing/pokes';
+import { POKEMON_GAME_STATE_SERVICE } from 'src/app/tokens/game-state/pokemon-game-state-service.token';
+import { pokedexEntries } from 'src/app/utils/testing/pokes';
 import { WhosThatPokemonComponent } from './whos-that-pokemon.component';
 
 @Component({
@@ -15,7 +16,7 @@ import { WhosThatPokemonComponent } from './whos-that-pokemon.component';
   template: '',
 })
 class FakePokeCardComponent implements PokeCardComponentInterface {
-  @Input() poke: Pokemon = EMPTY_POKEMON;
+  @Input() poke: PokedexEntry = EMPTY_POKEDEX_ENTRY;
 }
 describe('WhosThatPokemonComponent', () => {
   let component: WhosThatPokemonComponent;
@@ -27,13 +28,12 @@ describe('WhosThatPokemonComponent', () => {
   let pokemonGameStateServiceSpy: jasmine.SpyObj<GameStateService<Pokemon>>;
 
   beforeEach(async () => {
-
     pokemonGameStateServiceSpy = jasmine.createSpyObj<
       GameStateService<Pokemon>
     >({
       verifyItems: false,
-      getItem$: of(pokes[0]),
-      getNextItem : undefined,
+      getItem$: of(pokedexEntries[0]),
+      getNextItem: undefined,
     });
 
     await TestBed.configureTestingModule({
@@ -41,7 +41,7 @@ describe('WhosThatPokemonComponent', () => {
       imports: [ReactiveFormsModule],
       providers: [
         {
-          provide: GAME_STATE_SERVICE,
+          provide: POKEMON_GAME_STATE_SERVICE,
           useValue: pokemonGameStateServiceSpy,
         },
       ],
@@ -51,7 +51,7 @@ describe('WhosThatPokemonComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(WhosThatPokemonComponent);
     component = fixture.componentInstance;
-    component.poke = pokes[0];
+    component.pokedexEntry = pokedexEntries[0];
     fixture.detectChanges();
     compiled = fixture.nativeElement as HTMLElement;
     pokemonDebugElement = fixture.debugElement.query(
@@ -69,10 +69,12 @@ describe('WhosThatPokemonComponent', () => {
   });
 
   it('should pass a poke to PokeCardComponent', () => {
-    expect(pokeCardComponent.poke).toBe(pokes[0]);
+    expect(pokeCardComponent.poke).toBe(pokedexEntries[0]);
   });
 
   it('should have an input form so you can guess the pokemons name', () => {
+    component.pokedexEntry = { ...pokedexEntries[0], seen: false };
+    fixture.detectChanges();
     expect(compiled.querySelector('[data-test="input-guess"')).not.toBeNull();
     expect(compiled.querySelector('[data-test="form-guess"')).not.toBeNull();
     expect(compiled.querySelector('[data-test="button-guess"')).not.toBeNull();
@@ -94,14 +96,14 @@ describe('WhosThatPokemonComponent', () => {
   });
 
   it('should contain a next pokemon button if the pokemon is seen', () => {
-    component.poke = { ...pokes[0], seen: true };
+    component.pokedexEntry = { ...pokedexEntries[0], seen: true };
     fixture.detectChanges();
     expect(compiled.querySelector('[data-test="button-next"')).not.toBeNull();
   });
 
   describe('onSubmit', () => {
     it('should call the pokemon verification service', () => {
-      component.poke = pokes[0];
+      component.pokedexEntry = pokedexEntries[0];
       const inputGuess = component.formGroup.get('inputGuess');
       inputGuess?.setValue('PIKACHU');
       const toBeTested = <Pokemon>{ name: inputGuess?.value };
@@ -109,8 +111,7 @@ describe('WhosThatPokemonComponent', () => {
 
       expect(pokemonGameStateServiceSpy.verifyItems).toHaveBeenCalledTimes(1);
       expect(pokemonGameStateServiceSpy.verifyItems).toHaveBeenCalledWith(
-        toBeTested,
-        pokes[0]
+        toBeTested
       );
     });
   });

@@ -1,7 +1,7 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserTestingModule } from '@angular/platform-browser/testing';
-import Pokemon from 'src/app/models/Pokemon';
+import { PokedexEntry } from 'src/app/models/PokedexEntry';
 import { UnseenPokeCardComponent } from './unseen-poke-card.component';
 
 describe('UnseenPokeCardComponent', () => {
@@ -9,7 +9,7 @@ describe('UnseenPokeCardComponent', () => {
   let fixture: ComponentFixture<UnseenPokeCardComponent>;
   let compiled: HTMLElement;
 
-  let pokemon: Pokemon = {
+  let pokemon: PokedexEntry = {
     id: 1,
     image: 'image/address',
     name: 'My Pokemon',
