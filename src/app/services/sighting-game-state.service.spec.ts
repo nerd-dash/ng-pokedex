@@ -4,11 +4,10 @@ import { FetchService } from '../models/FetchService';
 import { EMPTY_SIGHTING, Sighting } from '../models/Sighting';
 import { SIGHTING_FETCH_SERVICE } from '../tokens/fetch/sighting-fetch-service.token';
 import { sightings } from '../utils/testing/sightings';
-
 import { SightingGameStateService } from './sighting-game-state.service';
 import { UtilsService } from './utils.service';
 
-fdescribe('SightingGameStateService', () => {
+describe('SightingGameStateService', () => {
   let service: SightingGameStateService;
   let fetchServiceSpy: jasmine.SpyObj<FetchService<Sighting>>;
   let utilsServiceSpy: jasmine.SpyObj<UtilsService>;

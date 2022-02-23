@@ -1,13 +1,11 @@
 import { Inject, Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { FetchService } from '../models/FetchService';
 import { GameState } from '../models/GameState';
 import { GameStateService } from '../models/GameStateService';
 import { EMPTY_SIGHTING, Sighting } from '../models/Sighting';
 import { SIGHTING_FETCH_SERVICE } from '../tokens/fetch/sighting-fetch-service.token';
-import { sightings } from '../utils/testing/sightings';
 import { StateService } from './state.service';
-import { UtilsService } from './utils.service';
 
 const initialState: GameState<Sighting> = {
   allItems: [],
