@@ -7,7 +7,7 @@ import Pokemon from '../models/Pokemon';
 @Injectable({
   providedIn: 'root',
 })
-export class PokeFetchService implements FetchService<Pokemon> {
+export class PokemonFetchService implements FetchService<Pokemon> {
   private POKE_SERVER_BASE_URL = environment.POKE_SERVER_BASE_URL;
 
   constructor(private httpClient: HttpClient) {}

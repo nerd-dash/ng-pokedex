@@ -1,23 +1,23 @@
 import {
   HttpClientTestingModule,
-  HttpTestingController
+  HttpTestingController,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments/environment';
 import Pokemon from '../models/Pokemon';
 import { pokes } from '../utils/testing/pokes';
-import { PokeFetchService } from './poke-fetch.service';
+import { PokemonFetchService } from './pokemon-fetch.service';
 
-describe('PokeFetchService', () => {
-  let service: PokeFetchService;
+describe('PokemonFetchService', () => {
+  let service: PokemonFetchService;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [PokeFetchService],
+      providers: [PokemonFetchService],
     });
-    service = TestBed.inject(PokeFetchService);
+    service = TestBed.inject(PokemonFetchService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 
@@ -64,7 +64,7 @@ describe('PokeFetchService', () => {
 
   describe('put$', () => {
     it('should make a PUT request to pokmeon api update', () => {
-      const poke: Pokemon = { ...pokes[2], seen: true };
+      const poke: Pokemon = { ...pokes[2] };
       service.put$(poke).subscribe((pokemon) => {
         expect(pokemon).toBe(pokes[0]);
       });
