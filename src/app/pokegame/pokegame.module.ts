@@ -3,15 +3,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PokeCardModule } from '../pokedex/component/poke-card.module';
-import { PokeFetchService } from '../services/poke-fetch.service';
+import { PokemonFetchService } from '../services/pokemon-fetch.service';
 import { PokemonGameStateService } from '../services/pokemon-game-state.service';
-import { FETCH_SERVICE } from '../tokens/fetch.service.token';
-import { GAME_STATE_SERVICE } from '../tokens/game-state.service.token';
+import { POKEMON_FETCH_SERVICE } from '../tokens/fetch/pokemon-fetch-service.token';
+import { POKEMON_GAME_STATE_SERVICE } from '../tokens/game-state/pokemon-game-state-service.token';
+import { NavbarComponent } from './component/navbar/navbar.component';
 import { PokegameComponent } from './container/pokegame/pokegame.component';
+import { RandomPokemonComponent } from './container/random-pokemon/random-pokemon.component';
 import { WhosThatPokemonComponent } from './container/whos-that-pokemon/whos-that-pokemon.component';
 import { PokegameRoutingModule } from './pokegame-routing.module';
-import { RandomPokemonComponent } from './container/random-pokemon/random-pokemon.component';
-import { NavbarComponent } from './component/navbar/navbar.component';
 
 @NgModule({
   imports: [
@@ -29,13 +29,13 @@ import { NavbarComponent } from './component/navbar/navbar.component';
   ],
   providers: [
     {
-      provide: GAME_STATE_SERVICE,
-      useExisting: PokemonGameStateService,
+      provide: POKEMON_FETCH_SERVICE,
+      useExisting: PokemonFetchService,
     },
     {
-      provide: FETCH_SERVICE,
-      useExisting: PokeFetchService,
+      provide: POKEMON_GAME_STATE_SERVICE,
+      useExisting: PokemonGameStateService,
     },
-  ]
+  ],
 })
 export class PokegameModule {}
