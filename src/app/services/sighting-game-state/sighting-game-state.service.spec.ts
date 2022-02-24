@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { FetchService } from '../models/FetchService';
-import { EMPTY_SIGHTING, Sighting } from '../models/Sighting';
-import { SIGHTING_FETCH_SERVICE } from '../tokens/fetch/sighting-fetch-service.token';
-import { sightings } from '../utils/testing/sightings';
+import { FetchService } from '../../models/FetchService';
+import { EMPTY_SIGHTING, Sighting } from '../../models/Sighting';
+import { SIGHTING_FETCH_SERVICE } from '../../tokens/fetch/sighting-fetch-service.token';
+import { sightings } from '../../utils/testing/sightings';
+import { UtilsService } from '../utils/utils.service';
 import { SightingGameStateService } from './sighting-game-state.service';
-import { UtilsService } from './utils.service';
 
 describe('SightingGameStateService', () => {
   let service: SightingGameStateService;

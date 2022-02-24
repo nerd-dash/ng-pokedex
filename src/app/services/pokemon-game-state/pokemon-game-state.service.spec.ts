@@ -1,16 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { FetchService } from '../models/FetchService';
-import { GameStateService } from '../models/GameStateService';
-import { EMPTY_POKEDEX_ENTRY } from '../models/PokedexEntry';
-import Pokemon, { EMPTY_POKEMON } from '../models/Pokemon';
-import { EMPTY_SIGHTING, Sighting } from '../models/Sighting';
-import { POKEMON_FETCH_SERVICE } from '../tokens/fetch/pokemon-fetch-service.token';
-import { SIGHTING_GAME_STATE_SERVICE } from '../tokens/game-state/sighting-game-state-service.token';
-import { pokedexEntries, pokes } from '../utils/testing/pokes';
-import { sightings } from '../utils/testing/sightings';
+import { FetchService } from '../../models/FetchService';
+import { GameStateService } from '../../models/GameStateService';
+import { EMPTY_POKEDEX_ENTRY } from '../../models/PokedexEntry';
+import Pokemon, { EMPTY_POKEMON } from '../../models/Pokemon';
+import { EMPTY_SIGHTING, Sighting } from '../../models/Sighting';
+import { POKEMON_FETCH_SERVICE } from '../../tokens/fetch/pokemon-fetch-service.token';
+import { SIGHTING_GAME_STATE_SERVICE } from '../../tokens/game-state/sighting-game-state-service.token';
+import { pokedexEntries, pokes } from '../../utils/testing/pokes';
+import { sightings } from '../../utils/testing/sightings';
 import { PokemonGameStateService } from './pokemon-game-state.service';
-import { UtilsService } from './utils.service';
+import { UtilsService } from '../utils.service';
 
 describe('PokemonGameStateService', () => {
   let service: PokemonGameStateService;

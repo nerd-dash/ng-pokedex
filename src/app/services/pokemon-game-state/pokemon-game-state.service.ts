@@ -1,15 +1,15 @@
 import { Inject, Injectable } from '@angular/core';
 import { zip } from 'rxjs';
-import { FetchService } from '../models/FetchService';
-import { GameState } from '../models/GameState';
-import { GameStateService } from '../models/GameStateService';
-import { PokedexEntry } from '../models/PokedexEntry';
-import Pokemon, { EMPTY_POKEMON } from '../models/Pokemon';
-import { Sighting } from '../models/Sighting';
-import { POKEMON_FETCH_SERVICE } from '../tokens/fetch/pokemon-fetch-service.token';
-import { SIGHTING_GAME_STATE_SERVICE } from '../tokens/game-state/sighting-game-state-service.token';
-import { StateService } from './state.service';
-import { UtilsService } from './utils.service';
+import { FetchService } from 'src/app/models/FetchService';
+import { GameState } from 'src/app/models/GameState';
+import { GameStateService } from 'src/app/models/GameStateService';
+import { PokedexEntry } from 'src/app/models/PokedexEntry';
+import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
+import { Sighting } from 'src/app/models/Sighting';
+import { POKEMON_FETCH_SERVICE } from 'src/app/tokens/fetch/pokemon-fetch-service.token';
+import { SIGHTING_GAME_STATE_SERVICE } from 'src/app/tokens/game-state/sighting-game-state-service.token';
+import { StateService } from '../state/state.service';
+import { UtilsService } from '../utils/utils.service';
 
 const initialState: GameState<PokedexEntry> = {
   allItems: [],
@@ -96,9 +96,10 @@ export class PokemonGameStateService
         : { ...poke, seen: false }
     );
 
-  private updateSeenPokemon = (item: PokedexEntry) => {
+  private updateSeenPokemon = (seenPokedexEntry: PokedexEntry) => {
+    const item = { ...seenPokedexEntry, seen: true };
     this.setState({
-      item: item,
+      item,
       allItems: this.state.allItems.map((poke) =>
         item.id === poke.id ? item : poke
       ),

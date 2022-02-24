@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments/environment';
-import { Sighting } from '../models/Sighting';
+import { Sighting } from '../../models/Sighting';
 
 import { SightingFetchService } from './sighting-fetch.service';
 
@@ -34,8 +34,7 @@ describe('SightingFetchService', () => {
 
   describe('getAll$', () => {
     it('should make a GET request to sighting and return an observable with all sighting data', () => {
-
-      const params : HttpParams = new HttpParams().set('id', '1');
+      const params: HttpParams = new HttpParams().set('id', '1');
 
       service.getAll$(params).subscribe((sightings) => {
         expect(sightings).toEqual([sighting]);
@@ -84,5 +83,4 @@ describe('SightingFetchService', () => {
       req.flush(sight);
     });
   });
-
 });

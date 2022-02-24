@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { tap } from 'rxjs';
+import { AccessToken } from 'src/app/models/AccessToken';
+import { AuthService } from 'src/app/models/AuthService';
+import { PublishableService } from 'src/app/models/PublishableService';
+import { User } from 'src/app/models/User';
+import { PUBLISHABLE_SERVICE } from 'src/app/tokens/publishable-service.token';
 import { environment } from 'src/environments/environment';
-import { AccessToken } from '../models/AccessToken';
-import { AuthService } from '../models/AuthService';
-import { PublishableService } from '../models/PublishableService';
-import { User } from '../models/User';
-import { PUBLISHABLE_SERVICE } from '../tokens/publishable-service.token';
 
 @Injectable({
   providedIn: 'root',

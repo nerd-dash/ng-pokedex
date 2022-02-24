@@ -4,8 +4,8 @@ import {
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments/environment';
-import Pokemon from '../models/Pokemon';
-import { pokes } from '../utils/testing/pokes';
+import Pokemon from '../../models/Pokemon';
+import { pokes } from '../../utils/testing/pokes';
 import { PokemonFetchService } from './pokemon-fetch.service';
 
 describe('PokemonFetchService', () => {

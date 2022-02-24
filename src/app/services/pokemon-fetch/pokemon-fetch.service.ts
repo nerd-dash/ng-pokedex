@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FetchService } from 'src/app/models/FetchService';
+import Pokemon from 'src/app/models/Pokemon';
 import { environment } from 'src/environments/environment';
-import { FetchService } from '../models/FetchService';
-import Pokemon from '../models/Pokemon';
 
 @Injectable({
   providedIn: 'root',

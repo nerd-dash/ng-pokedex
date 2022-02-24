@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { User } from '../models/User';
+import { User } from '../../models/User';
 import { PublishableUserService } from './publishable-user.service';
 
 const user: User = {

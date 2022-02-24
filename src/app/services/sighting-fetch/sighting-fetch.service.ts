@@ -1,11 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { FetchService } from 'src/app/models/FetchService';
+import { Sighting } from 'src/app/models/Sighting';
 import { environment } from 'src/environments/environment';
-import { FetchService } from '../models/FetchService';
-import { Sighting } from '../models/Sighting';
-
-const sighting: Sighting = <Sighting>{};
 
 @Injectable({
   providedIn: 'root',
@@ -21,8 +18,7 @@ export class SightingFetchService implements FetchService<Sighting> {
       `${environment.SERVER_BASE_URL}/sighting/${id}`
     );
   put$ = (entity: Sighting) =>
-    this.httpClient.patch<Sighting>(
-      `${environment.SERVER_BASE_URL}/sighting/${entity.id}`,
-      { ...entity }
-    );
+    this.httpClient.post<Sighting>(`${environment.SERVER_BASE_URL}/sighting/`, {
+      ...entity,
+    });
 }

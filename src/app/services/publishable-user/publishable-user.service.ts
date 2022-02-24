@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { PublishableService } from '../models/PublishableService';
-import { EMPTY_USER, User } from '../models/User';
+import { PublishableService } from 'src/app/models/PublishableService';
+import { EMPTY_USER, User } from 'src/app/models/User';
 
 @Injectable({
   providedIn: 'root',

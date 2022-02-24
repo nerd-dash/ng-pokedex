@@ -5,10 +5,10 @@ import {
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { AccessToken } from '../models/AccessToken';
-import { PublishableService } from '../models/PublishableService';
-import { User } from '../models/User';
-import { PUBLISHABLE_SERVICE } from '../tokens/publishable-service.token';
+import { AccessToken } from '../../models/AccessToken';
+import { PublishableService } from '../../models/PublishableService';
+import { User } from '../../models/User';
+import { PUBLISHABLE_SERVICE } from '../../tokens/publishable-service.token';
 import { UserAuthService } from './user-auth.service';
 
 describe('UserAuthService', () => {

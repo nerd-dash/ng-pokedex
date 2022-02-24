@@ -1,4 +1,4 @@
-import { GameState } from '../models/GameState';
+import { GameState } from '../../models/GameState';
 import { StateService } from './state.service';
 
 const initialState: GameState<number> = {
