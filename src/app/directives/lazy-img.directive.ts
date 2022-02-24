@@ -7,6 +7,8 @@ export class LazyImgDirective {
   constructor(private elementRef: ElementRef<HTMLImageElement>) {}
 
   @Input('lazy-src') set lazySrc(src: string) {
+    /* istanbul ignore if */
+    if (!src) return;
     const rootMargin = `${this.elementRef.nativeElement.height || 100}px`;
 
     const options: IntersectionObserverInit = {
