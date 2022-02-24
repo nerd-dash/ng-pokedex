@@ -9,8 +9,8 @@ import { POKEMON_FETCH_SERVICE } from '../../tokens/fetch/pokemon-fetch-service.
 import { SIGHTING_GAME_STATE_SERVICE } from '../../tokens/game-state/sighting-game-state-service.token';
 import { pokedexEntries, pokes } from '../../utils/testing/pokes';
 import { sightings } from '../../utils/testing/sightings';
+import { UtilsService } from '../utils/utils.service';
 import { PokemonGameStateService } from './pokemon-game-state.service';
-import { UtilsService } from '../utils.service';
 
 describe('PokemonGameStateService', () => {
   let service: PokemonGameStateService;

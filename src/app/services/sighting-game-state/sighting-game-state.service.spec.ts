@@ -16,7 +16,7 @@ describe('SightingGameStateService', () => {
     fetchServiceSpy = jasmine.createSpyObj<FetchService<Sighting>>({
       getAll$: of(sightings),
       get$: of(EMPTY_SIGHTING),
-      put$: of(EMPTY_SIGHTING),
+      post$: of(EMPTY_SIGHTING),
     });
 
     utilsServiceSpy = jasmine.createSpyObj<UtilsService>({
@@ -56,7 +56,7 @@ describe('SightingGameStateService', () => {
         service.verifyItems(sightings[0]);
         fail();
       } catch (error) {
-        expect(error).toBe('This method should not be called!');
+        expect(error).toBe('Method not allowed!');
       }
     });
   });
@@ -67,18 +67,29 @@ describe('SightingGameStateService', () => {
         service.getNextItem();
         fail();
       } catch (error) {
-        expect(error).toBe('This method should not be called!');
+        expect(error).toBe('Method not allowed!');
       }
     });
   });
 
   describe('updateItem$', () => {
-    it('should call the service to put the item', () => {
+    it('should call the service to post the item', () => {
       const expected: Sighting = { id: 0, pokemonId: 1, userId: 2 };
       service.updateItem$(expected).subscribe((sighting) => {
-        expect(fetchServiceSpy.put$).toHaveBeenCalledOnceWith(expected);
+        expect(fetchServiceSpy.post$).toHaveBeenCalledOnceWith(expected);
         expect(sighting).toBe(EMPTY_SIGHTING);
       });
+    });
+  });
+
+  describe('getItem$', () => {
+    it('should throw an error', () => {
+      try {
+        service.getItem$();
+        fail();
+      } catch (error) {
+        expect(error).toBe('Method not allowed!');
+      }
     });
   });
 });

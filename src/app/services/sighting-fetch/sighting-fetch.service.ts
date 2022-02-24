@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { FetchService } from 'src/app/models/FetchService';
 import { Sighting } from 'src/app/models/Sighting';
 import { environment } from 'src/environments/environment';
@@ -17,8 +18,18 @@ export class SightingFetchService implements FetchService<Sighting> {
     this.httpClient.get<Sighting>(
       `${environment.SERVER_BASE_URL}/sighting/${id}`
     );
-  put$ = (entity: Sighting) =>
+  post$ = (entity: Sighting) =>
     this.httpClient.post<Sighting>(`${environment.SERVER_BASE_URL}/sighting/`, {
       ...entity,
     });
+
+  put$ = (entity: Sighting) => {
+    throw 'Method not allowed!';
+  };
+  patch$ = (entity: Sighting) => {
+    throw 'Method not allowed!';
+  };
+  delete$ = (entity: Sighting) => {
+    throw 'Method not allowed!';
+  };
 }

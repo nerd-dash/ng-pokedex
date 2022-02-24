@@ -27,14 +27,16 @@ export class SightingGameStateService
     this.init();
   }
   getNextItem = () => {
-    throw 'This method should not be called!';
+    throw 'Method not allowed!';
   };
 
   verifyItems = (toBeTested: Partial<Sighting>) => {
-    throw 'This method should not be called!';
+    throw 'Method not allowed!';
   };
 
-  getItem$ = () => throwError(() => 'This method should not be called!');
+  getItem$ = () => {
+    throw 'Method not allowed!';
+  };
 
   getAllItems$ = () => this.select((state) => state.allItems);
 
@@ -44,7 +46,7 @@ export class SightingGameStateService
       allItems: [...this.state.allItems, item],
     });
 
-    return this.sightingFetchService.put$(item);
+    return this.sightingFetchService.post$(item);
   };
 
   private init = () => {

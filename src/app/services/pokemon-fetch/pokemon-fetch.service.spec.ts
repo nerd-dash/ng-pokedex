@@ -78,4 +78,37 @@ describe('PokemonFetchService', () => {
       req.flush(pokes[0]);
     });
   });
+
+  describe('post$', () => {
+    it('should throw an error', () => {
+      try {
+        service.post$(pokes[0]);
+        fail();
+      } catch (error) {
+        expect(error).toBe('Method not allowed!');
+      }
+    });
+  });
+
+  describe('patch$', () => {
+    it('should throw an error', () => {
+      try {
+        service.patch$(pokes[0]);
+        fail();
+      } catch (error) {
+        expect(error).toBe('Method not allowed!');
+      }
+    });
+  });
+
+  describe('delete$', () => {
+    it('should throw an error', () => {
+      try {
+        service.delete$(pokes[0]);
+        fail();
+      } catch (error) {
+        expect(error).toBe('Method not allowed!');
+      }
+    });
+  });
 });

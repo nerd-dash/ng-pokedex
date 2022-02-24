@@ -67,20 +67,53 @@ describe('SightingFetchService', () => {
     });
   });
 
-  describe('put$', () => {
-    it('should make a PUT request to sighting api update', () => {
+  describe('post$', () => {
+    it('should make a POST request to sighting api update', () => {
       const sight: Sighting = { ...sighting, pokemonId: 134 };
-      service.put$(sight).subscribe((sighting) => {
+      service.post$(sight).subscribe((sighting) => {
         expect(sighting).toBe(sight);
       });
 
       const req = httpTestingController.expectOne(
-        `${environment.SERVER_BASE_URL}/sighting/${sight.id}`
+        `${environment.SERVER_BASE_URL}/sighting/`
       );
 
-      expect(req.request.method).toEqual('PATCH');
+      expect(req.request.method).toEqual('POST');
 
       req.flush(sight);
+    });
+  });
+
+  describe('put$', () => {
+    it('should throw an error', () => {
+      try {
+        service.put$(sighting);
+        fail();
+      } catch (error) {
+        expect(error).toBe('Method not allowed!');
+      }
+    });
+  });
+
+  describe('patch$', () => {
+    it('should throw an error', () => {
+      try {
+        service.patch$(sighting);
+        fail();
+      } catch (error) {
+        expect(error).toBe('Method not allowed!');
+      }
+    });
+  });
+
+  describe('delete$', () => {
+    it('should throw an error', () => {
+      try {
+        service.delete$(sighting);
+        fail();
+      } catch (error) {
+        expect(error).toBe('Method not allowed!');
+      }
     });
   });
 });
