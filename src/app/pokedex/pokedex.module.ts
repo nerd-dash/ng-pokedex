@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { PokeFetchService } from '../services/poke-fetch.service';
-import { PokemonGameStateService } from '../services/pokemon-game-state.service';
-import { FETCH_SERVICE } from '../tokens/fetch.service.token';
-import { GAME_STATE_SERVICE } from '../tokens/game-state.service.token';
+import { PokemonGameStateService } from '../services/pokemon-game-state/pokemon-game-state.service';
+import { UserAuthService } from '../services/user-auth/user-auth.service';
+import { POKEMON_GAME_STATE_SERVICE } from '../tokens/game-state/pokemon-game-state-service.token';
+import { USER_AUTH_SERVICE } from '../tokens/user-auth-service.token';
 import { PokeCardModule } from './component/poke-card.module';
 import { PokedexComponent } from './container/pokedex/pokedex.component';
 import { PokedexRoutingModule } from './pokedex-routing.module';
@@ -19,10 +19,13 @@ import { PokedexRoutingModule } from './pokedex-routing.module';
   ],
   exports: [PokedexComponent],
   providers: [
-    { provide: GAME_STATE_SERVICE, useExisting: PokemonGameStateService },
     {
-      provide: FETCH_SERVICE,
-      useExisting: PokeFetchService,
+      provide: USER_AUTH_SERVICE,
+      useExisting: UserAuthService,
+    },
+    {
+      provide: POKEMON_GAME_STATE_SERVICE,
+      useExisting: PokemonGameStateService,
     },
   ],
 })

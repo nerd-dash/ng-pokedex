@@ -1,24 +1,24 @@
 import {
   HttpClientTestingModule,
-  HttpTestingController
+  HttpTestingController,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments/environment';
-import Pokemon from '../models/Pokemon';
-import { pokes } from '../utils/testing/pokes';
-import { PokeFetchService } from './poke-fetch.service';
+import Pokemon from '../../models/Pokemon';
+import { pokes } from '../../utils/testing/pokes';
+import { PokemonFetchService } from './pokemon-fetch.service';
 
-describe('PokeFetchService', () => {
-  let service: PokeFetchService;
+describe('PokemonFetchService', () => {
+  let service: PokemonFetchService;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [PokeFetchService],
+      providers: [PokemonFetchService],
     });
-    service = TestBed.inject(PokeFetchService);
-    httpTestingController = TestBed.get(HttpTestingController);
+    service = TestBed.inject(PokemonFetchService);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   afterEach(() => {
@@ -29,7 +29,7 @@ describe('PokeFetchService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('getAll', () => {
+  describe('getAll$', () => {
     it('should make a GET request to pokemon Json and return an observable with all pokemon data', () => {
       service.getAll$().subscribe((pokemons) => {
         expect(pokemons).toBe(pokes);
@@ -64,7 +64,7 @@ describe('PokeFetchService', () => {
 
   describe('put$', () => {
     it('should make a PUT request to pokmeon api update', () => {
-      const poke: Pokemon = { ...pokes[2], seen: true };
+      const poke: Pokemon = { ...pokes[2] };
       service.put$(poke).subscribe((pokemon) => {
         expect(pokemon).toBe(pokes[0]);
       });
@@ -76,6 +76,39 @@ describe('PokeFetchService', () => {
       expect(req.request.method).toEqual('PUT');
 
       req.flush(pokes[0]);
+    });
+  });
+
+  describe('post$', () => {
+    it('should throw an error', () => {
+      try {
+        service.post$(pokes[0]);
+        fail();
+      } catch (error) {
+        expect(error).toBe('Method not allowed!');
+      }
+    });
+  });
+
+  describe('patch$', () => {
+    it('should throw an error', () => {
+      try {
+        service.patch$(pokes[0]);
+        fail();
+      } catch (error) {
+        expect(error).toBe('Method not allowed!');
+      }
+    });
+  });
+
+  describe('delete$', () => {
+    it('should throw an error', () => {
+      try {
+        service.delete$(pokes[0]);
+        fail();
+      } catch (error) {
+        expect(error).toBe('Method not allowed!');
+      }
     });
   });
 });

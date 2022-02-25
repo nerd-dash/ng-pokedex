@@ -1,9 +1,10 @@
 {
+  "users": [],
+  "sighting": [],
   "pokemon": [
     {
       "id": 1,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
-      "seen": false,
       "name": "Bulbasaur",
       "type": ["Grass", "Poison"],
       "base": {
@@ -18,7 +19,6 @@
     {
       "id": 2,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-      "seen": false,
       "name": "Ivysaur",
       "type": ["Grass", "Poison"],
       "base": {
@@ -33,7 +33,6 @@
     {
       "id": 3,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
-      "seen": false,
       "name": "Venusaur",
       "type": ["Grass", "Poison"],
       "base": {
@@ -48,7 +47,6 @@
     {
       "id": 4,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-      "seen": false,
       "name": "Charmander",
       "type": ["Fire"],
       "base": {
@@ -63,7 +61,6 @@
     {
       "id": 5,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png",
-      "seen": false,
       "name": "Charmeleon",
       "type": ["Fire"],
       "base": {
@@ -78,7 +75,6 @@
     {
       "id": 6,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
-      "seen": false,
       "name": "Charizard",
       "type": ["Fire", "Flying"],
       "base": {
@@ -93,7 +89,6 @@
     {
       "id": 7,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
-      "seen": false,
       "name": "Squirtle",
       "type": ["Water"],
       "base": {
@@ -108,7 +103,6 @@
     {
       "id": 8,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png",
-      "seen": false,
       "name": "Wartortle",
       "type": ["Water"],
       "base": {
@@ -123,7 +117,6 @@
     {
       "id": 9,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
-      "seen": false,
       "name": "Blastoise",
       "type": ["Water"],
       "base": {
@@ -138,7 +131,6 @@
     {
       "id": 10,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png",
-      "seen": false,
       "name": "Caterpie",
       "type": ["Bug"],
       "base": {
@@ -153,7 +145,6 @@
     {
       "id": 11,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png",
-      "seen": false,
       "name": "Metapod",
       "type": ["Bug"],
       "base": {
@@ -168,7 +159,6 @@
     {
       "id": 12,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png",
-      "seen": false,
       "name": "Butterfree",
       "type": ["Bug", "Flying"],
       "base": {
@@ -183,7 +173,6 @@
     {
       "id": 13,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png",
-      "seen": false,
       "name": "Weedle",
       "type": ["Bug", "Poison"],
       "base": {
@@ -198,7 +187,6 @@
     {
       "id": 14,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png",
-      "seen": false,
       "name": "Kakuna",
       "type": ["Bug", "Poison"],
       "base": {
@@ -213,7 +201,6 @@
     {
       "id": 15,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png",
-      "seen": false,
       "name": "Beedrill",
       "type": ["Bug", "Poison"],
       "base": {
@@ -228,7 +215,6 @@
     {
       "id": 16,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png",
-      "seen": false,
       "name": "Pidgey",
       "type": ["Normal", "Flying"],
       "base": {
@@ -243,7 +229,6 @@
     {
       "id": 17,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png",
-      "seen": false,
       "name": "Pidgeotto",
       "type": ["Normal", "Flying"],
       "base": {
@@ -258,7 +243,6 @@
     {
       "id": 18,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png",
-      "seen": false,
       "name": "Pidgeot",
       "type": ["Normal", "Flying"],
       "base": {
@@ -273,7 +257,6 @@
     {
       "id": 19,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png",
-      "seen": false,
       "name": "Rattata",
       "type": ["Normal"],
       "base": {
@@ -288,7 +271,6 @@
     {
       "id": 20,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png",
-      "seen": false,
       "name": "Raticate",
       "type": ["Normal"],
       "base": {
@@ -303,7 +285,6 @@
     {
       "id": 21,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png",
-      "seen": false,
       "name": "Spearow",
       "type": ["Normal", "Flying"],
       "base": {
@@ -318,7 +299,6 @@
     {
       "id": 22,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png",
-      "seen": false,
       "name": "Fearow",
       "type": ["Normal", "Flying"],
       "base": {
@@ -333,7 +313,6 @@
     {
       "id": 23,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png",
-      "seen": false,
       "name": "Ekans",
       "type": ["Poison"],
       "base": {
@@ -348,7 +327,6 @@
     {
       "id": 24,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png",
-      "seen": false,
       "name": "Arbok",
       "type": ["Poison"],
       "base": {
@@ -363,7 +341,6 @@
     {
       "id": 25,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
-      "seen": false,
       "name": "Pikachu",
       "type": ["Electric"],
       "base": {
@@ -378,7 +355,6 @@
     {
       "id": 26,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png",
-      "seen": false,
       "name": "Raichu",
       "type": ["Electric"],
       "base": {
@@ -393,7 +369,6 @@
     {
       "id": 27,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png",
-      "seen": false,
       "name": "Sandshrew",
       "type": ["Ground"],
       "base": {
@@ -408,7 +383,6 @@
     {
       "id": 28,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png",
-      "seen": false,
       "name": "Sandslash",
       "type": ["Ground"],
       "base": {
@@ -423,7 +397,6 @@
     {
       "id": 29,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/29.png",
-      "seen": false,
       "name": "Nidoran♀",
       "type": ["Poison"],
       "base": {
@@ -438,7 +411,6 @@
     {
       "id": 30,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/30.png",
-      "seen": false,
       "name": "Nidorina",
       "type": ["Poison"],
       "base": {
@@ -453,7 +425,6 @@
     {
       "id": 31,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/31.png",
-      "seen": false,
       "name": "Nidoqueen",
       "type": ["Poison", "Ground"],
       "base": {
@@ -468,7 +439,6 @@
     {
       "id": 32,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/32.png",
-      "seen": false,
       "name": "Nidoran♂",
       "type": ["Poison"],
       "base": {
@@ -483,7 +453,6 @@
     {
       "id": 33,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/33.png",
-      "seen": false,
       "name": "Nidorino",
       "type": ["Poison"],
       "base": {
@@ -498,7 +467,6 @@
     {
       "id": 34,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/34.png",
-      "seen": false,
       "name": "Nidoking",
       "type": ["Poison", "Ground"],
       "base": {
@@ -513,7 +481,6 @@
     {
       "id": 35,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png",
-      "seen": false,
       "name": "Clefairy",
       "type": ["Fairy"],
       "base": {
@@ -528,7 +495,6 @@
     {
       "id": 36,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/36.png",
-      "seen": false,
       "name": "Clefable",
       "type": ["Fairy"],
       "base": {
@@ -543,7 +509,6 @@
     {
       "id": 37,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/37.png",
-      "seen": false,
       "name": "Vulpix",
       "type": ["Fire"],
       "base": {
@@ -558,7 +523,6 @@
     {
       "id": 38,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png",
-      "seen": false,
       "name": "Ninetales",
       "type": ["Fire"],
       "base": {
@@ -573,7 +537,6 @@
     {
       "id": 39,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png",
-      "seen": false,
       "name": "Jigglypuff",
       "type": ["Normal", "Fairy"],
       "base": {
@@ -588,7 +551,6 @@
     {
       "id": 40,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/40.png",
-      "seen": false,
       "name": "Wigglytuff",
       "type": ["Normal", "Fairy"],
       "base": {
@@ -603,7 +565,6 @@
     {
       "id": 41,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/41.png",
-      "seen": false,
       "name": "Zubat",
       "type": ["Poison", "Flying"],
       "base": {
@@ -618,7 +579,6 @@
     {
       "id": 42,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png",
-      "seen": false,
       "name": "Golbat",
       "type": ["Poison", "Flying"],
       "base": {
@@ -633,7 +593,6 @@
     {
       "id": 43,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/43.png",
-      "seen": false,
       "name": "Oddish",
       "type": ["Grass", "Poison"],
       "base": {
@@ -648,7 +607,6 @@
     {
       "id": 44,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/44.png",
-      "seen": false,
       "name": "Gloom",
       "type": ["Grass", "Poison"],
       "base": {
@@ -663,7 +621,6 @@
     {
       "id": 45,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/45.png",
-      "seen": false,
       "name": "Vileplume",
       "type": ["Grass", "Poison"],
       "base": {
@@ -678,7 +635,6 @@
     {
       "id": 46,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/46.png",
-      "seen": false,
       "name": "Paras",
       "type": ["Bug", "Grass"],
       "base": {
@@ -693,7 +649,6 @@
     {
       "id": 47,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/47.png",
-      "seen": false,
       "name": "Parasect",
       "type": ["Bug", "Grass"],
       "base": {
@@ -708,7 +663,6 @@
     {
       "id": 48,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/48.png",
-      "seen": false,
       "name": "Venonat",
       "type": ["Bug", "Poison"],
       "base": {
@@ -723,7 +677,6 @@
     {
       "id": 49,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/49.png",
-      "seen": false,
       "name": "Venomoth",
       "type": ["Bug", "Poison"],
       "base": {
@@ -738,7 +691,6 @@
     {
       "id": 50,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png",
-      "seen": false,
       "name": "Diglett",
       "type": ["Ground"],
       "base": {
@@ -753,7 +705,6 @@
     {
       "id": 51,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/51.png",
-      "seen": false,
       "name": "Dugtrio",
       "type": ["Ground"],
       "base": {
@@ -768,7 +719,6 @@
     {
       "id": 52,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png",
-      "seen": false,
       "name": "Meowth",
       "type": ["Normal"],
       "base": {
@@ -783,7 +733,6 @@
     {
       "id": 53,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/53.png",
-      "seen": false,
       "name": "Persian",
       "type": ["Normal"],
       "base": {
@@ -798,7 +747,6 @@
     {
       "id": 54,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/54.png",
-      "seen": false,
       "name": "Psyduck",
       "type": ["Water"],
       "base": {
@@ -813,7 +761,6 @@
     {
       "id": 55,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/55.png",
-      "seen": false,
       "name": "Golduck",
       "type": ["Water"],
       "base": {
@@ -828,7 +775,6 @@
     {
       "id": 56,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/56.png",
-      "seen": false,
       "name": "Mankey",
       "type": ["Fighting"],
       "base": {
@@ -843,7 +789,6 @@
     {
       "id": 57,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/57.png",
-      "seen": false,
       "name": "Primeape",
       "type": ["Fighting"],
       "base": {
@@ -858,7 +803,6 @@
     {
       "id": 58,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/58.png",
-      "seen": false,
       "name": "Growlithe",
       "type": ["Fire"],
       "base": {
@@ -873,7 +817,6 @@
     {
       "id": 59,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/59.png",
-      "seen": false,
       "name": "Arcanine",
       "type": ["Fire"],
       "base": {
@@ -888,7 +831,6 @@
     {
       "id": 60,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/60.png",
-      "seen": false,
       "name": "Poliwag",
       "type": ["Water"],
       "base": {
@@ -903,7 +845,6 @@
     {
       "id": 61,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/61.png",
-      "seen": false,
       "name": "Poliwhirl",
       "type": ["Water"],
       "base": {
@@ -918,7 +859,6 @@
     {
       "id": 62,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/62.png",
-      "seen": false,
       "name": "Poliwrath",
       "type": ["Water", "Fighting"],
       "base": {
@@ -933,7 +873,6 @@
     {
       "id": 63,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/63.png",
-      "seen": false,
       "name": "Abra",
       "type": ["Psychic"],
       "base": {
@@ -948,7 +887,6 @@
     {
       "id": 64,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/64.png",
-      "seen": false,
       "name": "Kadabra",
       "type": ["Psychic"],
       "base": {
@@ -963,7 +901,6 @@
     {
       "id": 65,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/65.png",
-      "seen": false,
       "name": "Alakazam",
       "type": ["Psychic"],
       "base": {
@@ -978,7 +915,6 @@
     {
       "id": 66,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/66.png",
-      "seen": false,
       "name": "Machop",
       "type": ["Fighting"],
       "base": {
@@ -993,7 +929,6 @@
     {
       "id": 67,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/67.png",
-      "seen": false,
       "name": "Machoke",
       "type": ["Fighting"],
       "base": {
@@ -1008,7 +943,6 @@
     {
       "id": 68,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/68.png",
-      "seen": false,
       "name": "Machamp",
       "type": ["Fighting"],
       "base": {
@@ -1023,7 +957,6 @@
     {
       "id": 69,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/69.png",
-      "seen": false,
       "name": "Bellsprout",
       "type": ["Grass", "Poison"],
       "base": {
@@ -1038,7 +971,6 @@
     {
       "id": 70,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/70.png",
-      "seen": false,
       "name": "Weepinbell",
       "type": ["Grass", "Poison"],
       "base": {
@@ -1053,7 +985,6 @@
     {
       "id": 71,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/71.png",
-      "seen": false,
       "name": "Victreebel",
       "type": ["Grass", "Poison"],
       "base": {
@@ -1068,7 +999,6 @@
     {
       "id": 72,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/72.png",
-      "seen": false,
       "name": "Tentacool",
       "type": ["Water", "Poison"],
       "base": {
@@ -1083,7 +1013,6 @@
     {
       "id": 73,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/73.png",
-      "seen": false,
       "name": "Tentacruel",
       "type": ["Water", "Poison"],
       "base": {
@@ -1098,7 +1027,6 @@
     {
       "id": 74,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/74.png",
-      "seen": false,
       "name": "Geodude",
       "type": ["Rock", "Ground"],
       "base": {
@@ -1113,7 +1041,6 @@
     {
       "id": 75,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/75.png",
-      "seen": false,
       "name": "Graveler",
       "type": ["Rock", "Ground"],
       "base": {
@@ -1128,7 +1055,6 @@
     {
       "id": 76,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png",
-      "seen": false,
       "name": "Golem",
       "type": ["Rock", "Ground"],
       "base": {
@@ -1143,7 +1069,6 @@
     {
       "id": 77,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png",
-      "seen": false,
       "name": "Ponyta",
       "type": ["Fire"],
       "base": {
@@ -1158,7 +1083,6 @@
     {
       "id": 78,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/78.png",
-      "seen": false,
       "name": "Rapidash",
       "type": ["Fire"],
       "base": {
@@ -1173,7 +1097,6 @@
     {
       "id": 79,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/79.png",
-      "seen": false,
       "name": "Slowpoke",
       "type": ["Water", "Psychic"],
       "base": {
@@ -1188,7 +1111,6 @@
     {
       "id": 80,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png",
-      "seen": false,
       "name": "Slowbro",
       "type": ["Water", "Psychic"],
       "base": {
@@ -1203,7 +1125,6 @@
     {
       "id": 81,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/81.png",
-      "seen": false,
       "name": "Magnemite",
       "type": ["Electric", "Steel"],
       "base": {
@@ -1218,7 +1139,6 @@
     {
       "id": 82,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/82.png",
-      "seen": false,
       "name": "Magneton",
       "type": ["Electric", "Steel"],
       "base": {
@@ -1233,7 +1153,6 @@
     {
       "id": 83,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/83.png",
-      "seen": false,
       "name": "Farfetch'd",
       "type": ["Normal", "Flying"],
       "base": {
@@ -1248,7 +1167,6 @@
     {
       "id": 84,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/84.png",
-      "seen": false,
       "name": "Doduo",
       "type": ["Normal", "Flying"],
       "base": {
@@ -1263,7 +1181,6 @@
     {
       "id": 85,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/85.png",
-      "seen": false,
       "name": "Dodrio",
       "type": ["Normal", "Flying"],
       "base": {
@@ -1278,7 +1195,6 @@
     {
       "id": 86,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/86.png",
-      "seen": false,
       "name": "Seel",
       "type": ["Water"],
       "base": {
@@ -1293,7 +1209,6 @@
     {
       "id": 87,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/87.png",
-      "seen": false,
       "name": "Dewgong",
       "type": ["Water", "Ice"],
       "base": {
@@ -1308,7 +1223,6 @@
     {
       "id": 88,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/88.png",
-      "seen": false,
       "name": "Grimer",
       "type": ["Poison"],
       "base": {
@@ -1323,7 +1237,6 @@
     {
       "id": 89,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/89.png",
-      "seen": false,
       "name": "Muk",
       "type": ["Poison"],
       "base": {
@@ -1338,7 +1251,6 @@
     {
       "id": 90,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/90.png",
-      "seen": false,
       "name": "Shellder",
       "type": ["Water"],
       "base": {
@@ -1353,7 +1265,6 @@
     {
       "id": 91,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/91.png",
-      "seen": false,
       "name": "Cloyster",
       "type": ["Water", "Ice"],
       "base": {
@@ -1368,7 +1279,6 @@
     {
       "id": 92,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/92.png",
-      "seen": false,
       "name": "Gastly",
       "type": ["Ghost", "Poison"],
       "base": {
@@ -1383,7 +1293,6 @@
     {
       "id": 93,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/93.png",
-      "seen": false,
       "name": "Haunter",
       "type": ["Ghost", "Poison"],
       "base": {
@@ -1398,7 +1307,6 @@
     {
       "id": 94,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png",
-      "seen": false,
       "name": "Gengar",
       "type": ["Ghost", "Poison"],
       "base": {
@@ -1413,7 +1321,6 @@
     {
       "id": 95,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/95.png",
-      "seen": false,
       "name": "Onix",
       "type": ["Rock", "Ground"],
       "base": {
@@ -1428,7 +1335,6 @@
     {
       "id": 96,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/96.png",
-      "seen": false,
       "name": "Drowzee",
       "type": ["Psychic"],
       "base": {
@@ -1443,7 +1349,6 @@
     {
       "id": 97,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/97.png",
-      "seen": false,
       "name": "Hypno",
       "type": ["Psychic"],
       "base": {
@@ -1458,7 +1363,6 @@
     {
       "id": 98,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/98.png",
-      "seen": false,
       "name": "Krabby",
       "type": ["Water"],
       "base": {
@@ -1473,7 +1377,6 @@
     {
       "id": 99,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/99.png",
-      "seen": false,
       "name": "Kingler",
       "type": ["Water"],
       "base": {
@@ -1488,7 +1391,6 @@
     {
       "id": 100,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/100.png",
-      "seen": false,
       "name": "Voltorb",
       "type": ["Electric"],
       "base": {
@@ -1503,7 +1405,6 @@
     {
       "id": 101,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/101.png",
-      "seen": false,
       "name": "Electrode",
       "type": ["Electric"],
       "base": {
@@ -1518,7 +1419,6 @@
     {
       "id": 102,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/102.png",
-      "seen": false,
       "name": "Exeggcute",
       "type": ["Grass", "Psychic"],
       "base": {
@@ -1533,7 +1433,6 @@
     {
       "id": 103,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png",
-      "seen": false,
       "name": "Exeggutor",
       "type": ["Grass", "Psychic"],
       "base": {
@@ -1548,7 +1447,6 @@
     {
       "id": 104,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/104.png",
-      "seen": false,
       "name": "Cubone",
       "type": ["Ground"],
       "base": {
@@ -1563,7 +1461,6 @@
     {
       "id": 105,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/105.png",
-      "seen": false,
       "name": "Marowak",
       "type": ["Ground"],
       "base": {
@@ -1578,7 +1475,6 @@
     {
       "id": 106,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/106.png",
-      "seen": false,
       "name": "Hitmonlee",
       "type": ["Fighting"],
       "base": {
@@ -1593,7 +1489,6 @@
     {
       "id": 107,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/107.png",
-      "seen": false,
       "name": "Hitmonchan",
       "type": ["Fighting"],
       "base": {
@@ -1608,7 +1503,6 @@
     {
       "id": 108,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/108.png",
-      "seen": false,
       "name": "Lickitung",
       "type": ["Normal"],
       "base": {
@@ -1623,7 +1517,6 @@
     {
       "id": 109,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/109.png",
-      "seen": false,
       "name": "Koffing",
       "type": ["Poison"],
       "base": {
@@ -1638,7 +1531,6 @@
     {
       "id": 110,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/110.png",
-      "seen": false,
       "name": "Weezing",
       "type": ["Poison"],
       "base": {
@@ -1653,7 +1545,6 @@
     {
       "id": 111,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/111.png",
-      "seen": false,
       "name": "Rhyhorn",
       "type": ["Ground", "Rock"],
       "base": {
@@ -1668,7 +1559,6 @@
     {
       "id": 112,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/112.png",
-      "seen": false,
       "name": "Rhydon",
       "type": ["Ground", "Rock"],
       "base": {
@@ -1683,7 +1573,6 @@
     {
       "id": 113,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png",
-      "seen": false,
       "name": "Chansey",
       "type": ["Normal"],
       "base": {
@@ -1698,7 +1587,6 @@
     {
       "id": 114,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/114.png",
-      "seen": false,
       "name": "Tangela",
       "type": ["Grass"],
       "base": {
@@ -1713,7 +1601,6 @@
     {
       "id": 115,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/115.png",
-      "seen": false,
       "name": "Kangaskhan",
       "type": ["Normal"],
       "base": {
@@ -1728,7 +1615,6 @@
     {
       "id": 116,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/116.png",
-      "seen": false,
       "name": "Horsea",
       "type": ["Water"],
       "base": {
@@ -1743,7 +1629,6 @@
     {
       "id": 117,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/117.png",
-      "seen": false,
       "name": "Seadra",
       "type": ["Water"],
       "base": {
@@ -1758,7 +1643,6 @@
     {
       "id": 118,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/118.png",
-      "seen": false,
       "name": "Goldeen",
       "type": ["Water"],
       "base": {
@@ -1773,7 +1657,6 @@
     {
       "id": 119,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/119.png",
-      "seen": false,
       "name": "Seaking",
       "type": ["Water"],
       "base": {
@@ -1788,7 +1671,6 @@
     {
       "id": 120,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/120.png",
-      "seen": false,
       "name": "Staryu",
       "type": ["Water"],
       "base": {
@@ -1803,7 +1685,6 @@
     {
       "id": 121,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/121.png",
-      "seen": false,
       "name": "Starmie",
       "type": ["Water", "Psychic"],
       "base": {
@@ -1818,7 +1699,6 @@
     {
       "id": 122,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/122.png",
-      "seen": false,
       "name": "Mr. Mime",
       "type": ["Psychic", "Fairy"],
       "base": {
@@ -1833,7 +1713,6 @@
     {
       "id": 123,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/123.png",
-      "seen": false,
       "name": "Scyther",
       "type": ["Bug", "Flying"],
       "base": {
@@ -1848,7 +1727,6 @@
     {
       "id": 124,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/124.png",
-      "seen": false,
       "name": "Jynx",
       "type": ["Ice", "Psychic"],
       "base": {
@@ -1863,7 +1741,6 @@
     {
       "id": 125,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/125.png",
-      "seen": false,
       "name": "Electabuzz",
       "type": ["Electric"],
       "base": {
@@ -1878,7 +1755,6 @@
     {
       "id": 126,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/126.png",
-      "seen": false,
       "name": "Magmar",
       "type": ["Fire"],
       "base": {
@@ -1893,7 +1769,6 @@
     {
       "id": 127,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/127.png",
-      "seen": false,
       "name": "Pinsir",
       "type": ["Bug"],
       "base": {
@@ -1908,7 +1783,6 @@
     {
       "id": 128,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/128.png",
-      "seen": false,
       "name": "Tauros",
       "type": ["Normal"],
       "base": {
@@ -1923,7 +1797,6 @@
     {
       "id": 129,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png",
-      "seen": false,
       "name": "Magikarp",
       "type": ["Water"],
       "base": {
@@ -1938,7 +1811,6 @@
     {
       "id": 130,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png",
-      "seen": false,
       "name": "Gyarados",
       "type": ["Water", "Flying"],
       "base": {
@@ -1953,7 +1825,6 @@
     {
       "id": 131,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png",
-      "seen": false,
       "name": "Lapras",
       "type": ["Water", "Ice"],
       "base": {
@@ -1968,7 +1839,6 @@
     {
       "id": 132,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
-      "seen": false,
       "name": "Ditto",
       "type": ["Normal"],
       "base": {
@@ -1983,7 +1853,6 @@
     {
       "id": 133,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png",
-      "seen": false,
       "name": "Eevee",
       "type": ["Normal"],
       "base": {
@@ -1998,7 +1867,6 @@
     {
       "id": 134,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png",
-      "seen": false,
       "name": "Vaporeon",
       "type": ["Water"],
       "base": {
@@ -2013,7 +1881,6 @@
     {
       "id": 135,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png",
-      "seen": false,
       "name": "Jolteon",
       "type": ["Electric"],
       "base": {
@@ -2028,7 +1895,6 @@
     {
       "id": 136,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/136.png",
-      "seen": false,
       "name": "Flareon",
       "type": ["Fire"],
       "base": {
@@ -2043,7 +1909,6 @@
     {
       "id": 137,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/137.png",
-      "seen": false,
       "name": "Porygon",
       "type": ["Normal"],
       "base": {
@@ -2058,7 +1923,6 @@
     {
       "id": 138,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/138.png",
-      "seen": false,
       "name": "Omanyte",
       "type": ["Rock", "Water"],
       "base": {
@@ -2073,7 +1937,6 @@
     {
       "id": 139,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/139.png",
-      "seen": false,
       "name": "Omastar",
       "type": ["Rock", "Water"],
       "base": {
@@ -2088,7 +1951,6 @@
     {
       "id": 140,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/140.png",
-      "seen": false,
       "name": "Kabuto",
       "type": ["Rock", "Water"],
       "base": {
@@ -2103,7 +1965,6 @@
     {
       "id": 141,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/141.png",
-      "seen": false,
       "name": "Kabutops",
       "type": ["Rock", "Water"],
       "base": {
@@ -2118,7 +1979,6 @@
     {
       "id": 142,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/142.png",
-      "seen": false,
       "name": "Aerodactyl",
       "type": ["Rock", "Flying"],
       "base": {
@@ -2133,7 +1993,6 @@
     {
       "id": 143,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png",
-      "seen": false,
       "name": "Snorlax",
       "type": ["Normal"],
       "base": {
@@ -2148,7 +2007,6 @@
     {
       "id": 144,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/144.png",
-      "seen": false,
       "name": "Articuno",
       "type": ["Ice", "Flying"],
       "base": {
@@ -2163,7 +2021,6 @@
     {
       "id": 145,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/145.png",
-      "seen": false,
       "name": "Zapdos",
       "type": ["Electric", "Flying"],
       "base": {
@@ -2178,7 +2035,6 @@
     {
       "id": 146,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png",
-      "seen": false,
       "name": "Moltres",
       "type": ["Fire", "Flying"],
       "base": {
@@ -2193,7 +2049,6 @@
     {
       "id": 147,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/147.png",
-      "seen": false,
       "name": "Dratini",
       "type": ["Dragon"],
       "base": {
@@ -2208,7 +2063,6 @@
     {
       "id": 148,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/148.png",
-      "seen": false,
       "name": "Dragonair",
       "type": ["Dragon"],
       "base": {
@@ -2223,7 +2077,6 @@
     {
       "id": 149,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png",
-      "seen": false,
       "name": "Dragonite",
       "type": ["Dragon", "Flying"],
       "base": {
@@ -2238,7 +2091,6 @@
     {
       "id": 150,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
-      "seen": false,
       "name": "Mewtwo",
       "type": ["Psychic"],
       "base": {
@@ -2253,7 +2105,6 @@
     {
       "id": 151,
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
-      "seen": false,
       "name": "Mew",
       "type": ["Psychic"],
       "base": {

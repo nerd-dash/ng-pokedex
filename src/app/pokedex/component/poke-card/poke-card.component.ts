@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
+import { EMPTY_POKEDEX_ENTRY, PokedexEntry } from 'src/app/models/PokedexEntry';
+import Pokemon from 'src/app/models/Pokemon';
 
 @Component({
   selector: 'app-poke-card',
@@ -7,7 +8,7 @@ import Pokemon, { EMPTY_POKEMON } from 'src/app/models/Pokemon';
   styleUrls: ['./poke-card.component.scss'],
 })
 export class PokeCardComponent implements OnInit, PokeCardComponentInterface {
-  @Input() public poke: Pokemon = EMPTY_POKEMON;
+  @Input() public poke: PokedexEntry = EMPTY_POKEDEX_ENTRY;
 
   constructor() {}
 
@@ -15,5 +16,5 @@ export class PokeCardComponent implements OnInit, PokeCardComponentInterface {
 }
 
 export interface PokeCardComponentInterface {
-  poke: Pokemon;
+  poke: PokedexEntry;
 }

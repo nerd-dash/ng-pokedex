@@ -6,7 +6,8 @@ import { HttpParams } from '@angular/common/http';
 
 export const environment = {
   production: false,
-  POKE_SERVER_BASE_URL: 'http://localhost:3000/pokemon',
+  SERVER_BASE_URL: 'http://localhost:3000',
+  POKE_SERVER_BASE_URL: `http://localhost:3000/pokemon`,
   UNSEEN_POKE_QUERY_PARAMS: new HttpParams()
     .set('seen', 'false')
     .set('_limit', '1'),

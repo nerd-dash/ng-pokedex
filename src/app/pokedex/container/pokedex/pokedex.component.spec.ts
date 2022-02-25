@@ -3,9 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
 import { GameStateService } from 'src/app/models/GameStateService';
-
-import { FETCH_SERVICE } from 'src/app/tokens/fetch.service.token';
-import { GAME_STATE_SERVICE } from 'src/app/tokens/game-state.service.token';
+import { EMPTY_POKEDEX_ENTRY } from 'src/app/models/PokedexEntry';
+import { POKEMON_GAME_STATE_SERVICE } from 'src/app/tokens/game-state/pokemon-game-state-service.token';
 import { pokes } from 'src/app/utils/testing/pokes';
 import Pokemon, { EMPTY_POKEMON } from '../../../models/Pokemon';
 import { PokeCardComponent } from '../../component/poke-card/poke-card.component';
@@ -35,7 +34,10 @@ describe('PokedexComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [FakePokeCardComponent, PokedexComponent],
       providers: [
-        { provide: GAME_STATE_SERVICE, useValue: pokeGameStateServiceSpy },
+        {
+          provide: POKEMON_GAME_STATE_SERVICE,
+          useValue: pokeGameStateServiceSpy,
+        },
       ],
     }).compileComponents();
   });
@@ -59,15 +61,15 @@ describe('PokedexComponent', () => {
     expect(compiled.querySelector('[data-test="poke-card"]')).not.toBeNull();
   });
 
-  it('should fetch a list of pokemons', () => {
-    component.pokes$
-      .subscribe((pokes) => {
-        expect(pokes.length).not.toBe(0);
+  it('should fetch a list of pokemons entry', () => {
+    component.entry$
+      .subscribe((entry) => {
+        expect(entry.length).not.toBe(0);
       })
       .unsubscribe();
   });
 
   it('should pass a pokemon to a PokeCard component', () => {
-    expect(childComponent.poke).not.toEqual(EMPTY_POKEMON);
+    expect(childComponent.poke).not.toEqual(EMPTY_POKEDEX_ENTRY);
   });
 });

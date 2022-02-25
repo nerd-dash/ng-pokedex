@@ -6,8 +6,8 @@ import {
 } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { GameStateService } from 'src/app/models/GameStateService';
-import Pokemon from 'src/app/models/Pokemon';
-import { GAME_STATE_SERVICE } from 'src/app/tokens/game-state.service.token';
+import { PokedexEntry } from 'src/app/models/PokedexEntry';
+import { POKEMON_GAME_STATE_SERVICE } from 'src/app/tokens/game-state/pokemon-game-state-service.token';
 
 @Component({
   selector: 'app-pokedex',
@@ -16,15 +16,15 @@ import { GAME_STATE_SERVICE } from 'src/app/tokens/game-state.service.token';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokedexComponent implements OnInit {
-  public pokes$: Observable<Pokemon[]> = of([]);
+  public entry$: Observable<PokedexEntry[]> = of([]);
 
   constructor(
-    @Inject(GAME_STATE_SERVICE)
-    private gameStateService: GameStateService<Pokemon>
+    @Inject(POKEMON_GAME_STATE_SERVICE)
+    private gameStateService: GameStateService<PokedexEntry>
   ) {}
 
   ngOnInit(): void {
-    this.pokes$ = this.gameStateService.getAllItems$();
+    this.entry$ = this.gameStateService.getAllItems$();
   }
 
   trackByMethod(index: number, el: any): number {

@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup" data-test="form-group" (ngSubmit)="onSubmit()">
+  <input
+    name="email"
+    id="email"
+    [formControl]="email"
+    type="email"
+    data-test="input-email"
+  />
+  <input
+    type="password"
+    name="email"
+    id="email"
+    [formControl]="password"
+    data-test="input-password"
+  />
+  <input type="submit" id="submit" value="Register" data-test="input-submit" />
+</form>

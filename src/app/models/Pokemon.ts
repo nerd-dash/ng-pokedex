@@ -1,7 +1,8 @@
-interface Pokemon {
-  id: number;
+import { Identificable } from './Identificable';
+import { Ownable } from './Ownable';
+
+interface Pokemon extends Identificable, Ownable {
   image: string;
-  seen: boolean;
   name: string;
   type: string[];
   base: {

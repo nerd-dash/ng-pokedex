@@ -1,16 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { FetchService } from 'src/app/models/FetchService';
+import Pokemon from 'src/app/models/Pokemon';
 import { environment } from 'src/environments/environment';
-import { FetchService } from '../models/FetchService';
-import Pokemon from '../models/Pokemon';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PokeFetchService implements FetchService<Pokemon> {
+export class PokemonFetchService implements FetchService<Pokemon> {
   private POKE_SERVER_BASE_URL = environment.POKE_SERVER_BASE_URL;
 
   constructor(private httpClient: HttpClient) {}
+
+  post$ = (entity: Pokemon) => {
+    throw 'Method not allowed!';
+  };
+  patch$ = (entity: Pokemon) => {
+    throw 'Method not allowed!';
+  };
+  delete$ = (entity: Pokemon) => {
+    throw 'Method not allowed!';
+  };
 
   get$ = (id: number) =>
     this.httpClient.get<Pokemon>(`${this.POKE_SERVER_BASE_URL}/${id}`);
