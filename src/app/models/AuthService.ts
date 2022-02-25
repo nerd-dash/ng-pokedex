@@ -4,7 +4,7 @@ import { Service } from './Service';
 
 export interface AuthService<K = any, T extends AccessToken<K> = any>
   extends Service {
-  register$: (loginData: any) => Observable<T>;
-  login$: (loginData: any) => Observable<T>;
+  register$: (loginData: Partial<K>) => Observable<T>;
+  login$: (loginData: Partial<K>) => Observable<T>;
   loggedIn$: () => Observable<K>;
 }
