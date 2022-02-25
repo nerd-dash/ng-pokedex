@@ -8,7 +8,8 @@ const routes: Routes = [
     path: '',
     component: PokegameComponent,
     children: [
-      { path: '', component: RandomPokemonComponent },
+      { path: '', redirectTo: 'pokegame' },
+      { path: 'pokegame', component: RandomPokemonComponent },
       {
         path: 'pokedex',
         loadChildren: () =>

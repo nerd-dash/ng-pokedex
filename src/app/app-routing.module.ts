@@ -9,6 +9,13 @@ const routes: Routes = [
         (module) => module.PokegameModule
       ),
   },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./authentication/authentication.module').then(
+        (module) => module.AuthenticationModule
+      ),
+  },
 ];
 
 @NgModule({
