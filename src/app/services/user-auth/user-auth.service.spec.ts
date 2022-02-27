@@ -4,6 +4,8 @@ import {
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
+import { StorageService } from 'src/app/models/StorageService';
+import { STORAGE_SERVICE } from 'src/app/tokens/user-storage-service.token';
 import { environment } from 'src/environments/environment';
 import { AccessToken } from '../../models/AccessToken';
 import { PublishableService } from '../../models/PublishableService';
@@ -15,6 +17,7 @@ describe('UserAuthService', () => {
   let service: UserAuthService;
   let httpTestingController: HttpTestingController;
   let publishiableServiceSpy: jasmine.SpyObj<PublishableService<User>>;
+  let storageServiceSpy: jasmine.SpyObj<StorageService<AccessToken<User>>>;
 
   const user: User = {
     id: 1,
@@ -33,10 +36,17 @@ describe('UserAuthService', () => {
       next: undefined,
     });
 
+    storageServiceSpy = jasmine.createSpyObj<StorageService<AccessToken<User>>>(
+      {
+        setItem: undefined,
+      }
+    );
+
     TestBed.configureTestingModule({
       providers: [
         UserAuthService,
         { provide: PUBLISHABLE_SERVICE, useValue: publishiableServiceSpy },
+        { provide: STORAGE_SERVICE, useValue: storageServiceSpy },
       ],
       imports: [HttpClientTestingModule],
     });
@@ -75,6 +85,24 @@ describe('UserAuthService', () => {
           expect(_accessToken.payload).not.toBeUndefined();
           expect(publishiableServiceSpy.next).toHaveBeenCalledOnceWith(
             _accessToken.payload
+          );
+        });
+
+      const req = httpTestingController.expectOne(
+        `${environment.SERVER_BASE_URL}/login`
+      );
+
+      expect(req.request.method).toEqual('POST');
+
+      req.flush(accessToken);
+    });
+
+    it('should create an iten on local storage called token with the accessToken', () => {
+      service
+        .login$({ email: 'email', password: 'password' })
+        .subscribe((_accessToken) => {
+          expect(storageServiceSpy.setItem).toHaveBeenCalledOnceWith(
+            _accessToken
           );
         });
 
