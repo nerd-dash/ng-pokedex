@@ -8,13 +8,14 @@ import { RegisterComponent } from './register.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
   let authServiceSpy: jasmine.SpyObj<AuthService<User, AccessToken<User>>>;
   let routerSpy: jasmine.SpyObj<Router>;
+  let routeSpy: jasmine.SpyObj<ActivatedRoute>;
   let compiled: HTMLElement;
 
   const loginData: Partial<User> = {
@@ -40,6 +41,10 @@ describe('RegisterComponent', () => {
       }
     );
 
+    routeSpy = jasmine.createSpyObj<ActivatedRoute>({
+      toString: '',
+    });
+
     routerSpy = jasmine.createSpyObj<Router>({
       navigate: undefined,
     });
@@ -59,6 +64,10 @@ describe('RegisterComponent', () => {
         {
           provide: Router,
           useValue: routerSpy,
+        },
+        {
+          provide: ActivatedRoute,
+          useValue: routeSpy,
         },
       ],
       schemas: [NO_ERRORS_SCHEMA],
@@ -91,7 +100,9 @@ describe('RegisterComponent', () => {
     it('should show redirect to login page if registration is sucessfull', (done) => {
       fillFormGroup();
       component.onSubmit();
-      expect(routerSpy.navigate).toHaveBeenCalledOnceWith(['/login']);
+      expect(routerSpy.navigate).toHaveBeenCalledOnceWith(['../login'], {
+        relativeTo: routeSpy,
+      });
       done();
     });
   });

@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
 import { AccessToken } from 'src/app/models/AccessToken';
 import { AuthService } from 'src/app/models/AuthService';
@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     @Inject(USER_AUTH_SERVICE)
     private authService: AuthService<User, AccessToken<User>>,
+    private route: ActivatedRoute,
     private router: Router
   ) {}
 
@@ -33,5 +34,7 @@ export class RegisterComponent implements OnInit {
     this.authService
       .register$(this.formGroup.value)
       .pipe(first())
-      .subscribe(() => this.router.navigate(['/login']));
+      .subscribe(() =>
+        this.router.navigate(['../login'], { relativeTo: this.route })
+      );
 }
