@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { FetchService } from 'src/app/models/FetchService';
 import Pokemon from 'src/app/models/Pokemon';
 import { environment } from 'src/environments/environment';
@@ -9,8 +8,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class PokemonFetchService implements FetchService<Pokemon> {
-  private POKE_SERVER_BASE_URL = environment.POKE_SERVER_BASE_URL;
-
   constructor(private httpClient: HttpClient) {}
 
   post$ = (entity: Pokemon) => {
@@ -24,12 +21,18 @@ export class PokemonFetchService implements FetchService<Pokemon> {
   };
 
   get$ = (id: number) =>
-    this.httpClient.get<Pokemon>(`${this.POKE_SERVER_BASE_URL}/${id}`);
+    this.httpClient.get<Pokemon>(
+      `${environment.POKEMON_SERVER_BASE_URL}/${id}`
+    );
 
-  getAll$ = () => this.httpClient.get<Pokemon[]>(this.POKE_SERVER_BASE_URL);
+  getAll$ = () =>
+    this.httpClient.get<Pokemon[]>(environment.POKEMON_SERVER_BASE_URL);
 
   put$ = (entity: Pokemon) =>
-    this.httpClient.put<Pokemon>(`${this.POKE_SERVER_BASE_URL}/${entity.id}`, {
-      ...entity,
-    });
+    this.httpClient.put<Pokemon>(
+      `${environment.POKEMON_SERVER_BASE_URL}/${entity.id}`,
+      {
+        ...entity,
+      }
+    );
 }

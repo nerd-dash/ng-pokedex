@@ -36,7 +36,7 @@ describe('PokemonFetchService', () => {
       });
 
       const req = httpTestingController.expectOne(
-        `${environment.POKE_SERVER_BASE_URL}`
+        environment.POKEMON_SERVER_BASE_URL
       );
 
       expect(req.request.method).toEqual('GET');
@@ -53,7 +53,7 @@ describe('PokemonFetchService', () => {
       });
 
       const req = httpTestingController.expectOne(
-        `${environment.POKE_SERVER_BASE_URL}/${id}`
+        `${environment.POKEMON_SERVER_BASE_URL}/${id}`
       );
 
       expect(req.request.method).toEqual('GET');
@@ -70,7 +70,7 @@ describe('PokemonFetchService', () => {
       });
 
       const req = httpTestingController.expectOne(
-        `${environment.POKE_SERVER_BASE_URL}/${poke.id}`
+        `${environment.POKEMON_SERVER_BASE_URL}/${poke.id}`
       );
 
       expect(req.request.method).toEqual('PUT');
