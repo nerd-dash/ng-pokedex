@@ -1,10 +1,19 @@
 <nav data-test="nav">
   <ul data-test="ul">
     <li>
-      <a data-test="whos-that-poke-link" routerLink="/pokegame"
+      <a data-test="whos-that-poke-link" [routerLink]="POKEGAME_ROUTES.Pokegame"
         >Who is that Pokemon?</a
       >
     </li>
-    <li><a data-test="pokedex-link" routerLink="/pokedex">Pokedex</a></li>
+    <li>
+      <a data-test="pokedex-link" [routerLink]="POKEGAME_ROUTES.Pokedex"
+        >Pokedex</a
+      >
+    </li>
+    <li>
+      <a data-test="pokedex-login" routerLink="/{{ AUTH_ROUTES.Login }}"
+        >Login</a
+      >
+    </li>
   </ul>
 </nav>

@@ -1,4 +1,6 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { POKEGAME_ROUTES } from 'src/app/models/RoutesMap';
 
 import { NavbarComponent } from './navbar.component';
 
@@ -10,6 +12,7 @@ describe('NavbarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NavbarComponent],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   });
 
@@ -30,15 +33,15 @@ describe('NavbarComponent', () => {
   });
 
   it('it should contain links to the features', () => {
+    expect(component.POKEGAME_ROUTES).toEqual(POKEGAME_ROUTES);
+
     const whosThatPokeLink = compiled.querySelector(
       '[data-test="whos-that-poke-link"]'
     );
+
     const pokedexLink = compiled.querySelector('[data-test="pokedex-link"]');
 
     expect(whosThatPokeLink).not.toBeNull();
     expect(pokedexLink).not.toBeNull();
-
-    expect(whosThatPokeLink?.getAttribute(`routerlink`)).not.toBeNull();
-    expect(pokedexLink?.getAttribute(`routerlink`)).not.toBeNull();
   });
 });

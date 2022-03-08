@@ -1,19 +1,20 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { AccessToken } from 'src/app/models/AccessToken';
-import { AuthService } from 'src/app/models/AuthService';
+import { AuthFetchService } from 'src/app/models/AuthFetchService';
+import { AUTH_ROUTES } from 'src/app/models/RoutesMap';
 import { User } from 'src/app/models/User';
-import { USER_AUTH_SERVICE } from 'src/app/tokens/user-auth-service.token';
-import { RegisterComponent } from './register.component';
-import { RouterTestingModule } from '@angular/router/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { AUTH_FETCH_SERVICE } from 'src/app/tokens/fetch/auth-fetch-service.token';
 import { LoginComponent } from '../login/login.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { RegisterComponent } from './register.component';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
-  let authServiceSpy: jasmine.SpyObj<AuthService<User, AccessToken<User>>>;
+  let authServiceSpy: jasmine.SpyObj<AuthFetchService<User>>;
   let routerSpy: jasmine.SpyObj<Router>;
   let routeSpy: jasmine.SpyObj<ActivatedRoute>;
   let compiled: HTMLElement;
@@ -35,11 +36,9 @@ describe('RegisterComponent', () => {
   };
 
   beforeEach(async () => {
-    authServiceSpy = jasmine.createSpyObj<AuthService<User, AccessToken<User>>>(
-      {
-        register$: of(accessToken),
-      }
-    );
+    authServiceSpy = jasmine.createSpyObj<AuthFetchService<User>>({
+      register$: of(accessToken),
+    });
 
     routeSpy = jasmine.createSpyObj<ActivatedRoute>({
       toString: '',
@@ -53,12 +52,12 @@ describe('RegisterComponent', () => {
       declarations: [RegisterComponent],
       imports: [
         RouterTestingModule.withRoutes([
-          { path: 'login', component: LoginComponent },
+          { path: AUTH_ROUTES.Login, component: LoginComponent },
         ]),
       ],
       providers: [
         {
-          provide: USER_AUTH_SERVICE,
+          provide: AUTH_FETCH_SERVICE,
           useValue: authServiceSpy,
         },
         {
@@ -100,9 +99,12 @@ describe('RegisterComponent', () => {
     it('should show redirect to login page if registration is sucessfull', (done) => {
       fillFormGroup();
       component.onSubmit();
-      expect(routerSpy.navigate).toHaveBeenCalledOnceWith(['../login'], {
-        relativeTo: routeSpy,
-      });
+      expect(routerSpy.navigate).toHaveBeenCalledOnceWith(
+        [`../${AUTH_ROUTES.Login}`],
+        {
+          relativeTo: routeSpy,
+        }
+      );
       done();
     });
   });

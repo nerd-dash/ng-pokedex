@@ -2,10 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
-import { AccessToken } from 'src/app/models/AccessToken';
-import { AuthService } from 'src/app/models/AuthService';
+import { AuthFetchService } from 'src/app/models/AuthFetchService';
+import { AUTH_ROUTES } from 'src/app/models/RoutesMap';
 import { User } from 'src/app/models/User';
-import { USER_AUTH_SERVICE } from 'src/app/tokens/user-auth-service.token';
+import { AUTH_FETCH_SERVICE } from 'src/app/tokens/fetch/auth-fetch-service.token';
 
 @Component({
   selector: 'app-register',
@@ -14,8 +14,8 @@ import { USER_AUTH_SERVICE } from 'src/app/tokens/user-auth-service.token';
 })
 export class RegisterComponent implements OnInit {
   constructor(
-    @Inject(USER_AUTH_SERVICE)
-    private authService: AuthService<User, AccessToken<User>>,
+    @Inject(AUTH_FETCH_SERVICE)
+    private authService: AuthFetchService<User>,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -35,6 +35,8 @@ export class RegisterComponent implements OnInit {
       .register$(this.formGroup.value)
       .pipe(first())
       .subscribe(() =>
-        this.router.navigate(['../login'], { relativeTo: this.route })
+        this.router.navigate([`../${AUTH_ROUTES.Login}`], {
+          relativeTo: this.route,
+        })
       );
 }
