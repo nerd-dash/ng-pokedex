@@ -2,32 +2,34 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { AccessToken } from 'src/app/models/AccessToken';
-import { AuthService } from 'src/app/models/AuthService';
-import { PublishableService } from 'src/app/models/PublishableService';
+import { AuthFetchService } from 'src/app/models/AuthFetchService';
+import { AuthStateService } from 'src/app/models/AuthStateService';
 import { User } from 'src/app/models/User';
-import { PUBLISHABLE_SERVICE } from 'src/app/tokens/publishable-service.token';
-import { environment } from 'src/environments/environment';
+import { USER_STATE_SERVICE } from 'src/app/tokens/game-state/user-state-service.token';
+import { USER_AUTH_ENDPOINTS } from './user-auth.endpoints';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserAuthService implements AuthService<User, AccessToken<User>> {
+export class UserAuthService implements AuthFetchService<User> {
   constructor(
-    @Inject(PUBLISHABLE_SERVICE) private publishable: PublishableService<User>,
+    @Inject(USER_STATE_SERVICE)
+    private stateService: AuthStateService<User>,
     private httpClient: HttpClient
   ) {}
   login$ = (loginData: Partial<User>) =>
     this.httpClient
-      .post<AccessToken<User>>(`${environment.SERVER_BASE_URL}/login`, {
+      .post<AccessToken<User>>(USER_AUTH_ENDPOINTS.Login, {
         ...loginData,
       })
-      .pipe(tap((data) => this.publishable.next(data.payload)));
+      .pipe(
+        tap((data) => {
+          this.stateService.updateToken(data);
+        })
+      );
 
   register$ = (data: Partial<User>) =>
-    this.httpClient.post<AccessToken<User>>(
-      `${environment.SERVER_BASE_URL}/register`,
-      { ...data }
-    );
-
-  loggedIn$ = () => this.publishable.asObservable$();
+    this.httpClient.post<AccessToken<User>>(USER_AUTH_ENDPOINTS.Register, {
+      ...data,
+    });
 }

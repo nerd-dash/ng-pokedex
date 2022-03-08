@@ -6,7 +6,15 @@ export const sightings: Sighting[] = [
     pokemonId: 4,
   },
   {
+    id: 1,
+    pokemonId: 2,
+  },
+  {
     id: 2,
+    pokemonId: 2,
+  },
+  {
+    id: 3,
     pokemonId: 2,
   },
 ];

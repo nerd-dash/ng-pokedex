@@ -1,13 +1,12 @@
-import { HttpParams } from '@angular/common/http';
+import { Environment, Environments } from 'src/app/models/Environment';
 
-export const environment = {
+const SERVER_BASE_URL = 'http://localhost:3000';
+
+export const environment: Environment = {
   production: true,
-  SERVER_BASE_URL: 'http://localhost:3000',
-  POKE_SERVER_BASE_URL: `http://localhost:3000/pokemon`,
-  UNSEEN_POKE_QUERY_PARAMS: new HttpParams()
-    .set('seen', 'false')
-    .set('_limit', '1'),
-  PAGE_QUERY_PARAM_KEY: '_page',
-  INTIAL_UNSEEN_POKE_COUNT: 151,
-  COUNT_HEADER_NAME: 'x-total-count',
+  POKEMON_SERVER_BASE_URL: `https://pokeapi.co/api/v2/pokemon`,
+  LOGIN_SERVER_BASE_URL: SERVER_BASE_URL,
+  SIGHTING_SERVER_BASE_URL: `${SERVER_BASE_URL}/sighting`,
+  name: Environments.PRODUCITON,
+  PROVIDERS: [],
 };

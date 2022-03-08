@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { zip } from 'rxjs';
+import { combineLatestWith, first, map, Observable } from 'rxjs';
 import { FetchService } from 'src/app/models/FetchService';
 import { GameState } from 'src/app/models/GameState';
 import { GameStateService } from 'src/app/models/GameStateService';
@@ -25,13 +25,12 @@ export class PokemonGameStateService
 {
   constructor(
     @Inject(POKEMON_FETCH_SERVICE)
-    private pokemonFetchService: FetchService<Pokemon>,
+    private fetchService: FetchService<Pokemon>,
     @Inject(SIGHTING_GAME_STATE_SERVICE)
     private sightingGameStateService: GameStateService<Sighting>,
     private utilService: UtilsService
   ) {
     super(initialState);
-    this.init();
   }
 
   getItem$ = () => this.select((state) => state.item);
@@ -55,24 +54,24 @@ export class PokemonGameStateService
 
   getNextItem = () => this.getRandomUnseen();
 
-  private init = (): void => {
-    const pokedexEntries$ = zip(
-      this.pokemonFetchService.getAll$(),
-      this.sightingGameStateService.getAllItems$()
-    );
-    pokedexEntries$.subscribe((entries) => {
-      const [pokemons, sightings] = entries;
-      const allItems = this.convertPokemonToPokedexEntries({
-        pokemons,
-        sightings,
-      });
-      this.setState({
-        ...this.state,
-        allItems,
-      });
+  initiateState$ = (): Observable<void> => {
+    const pokedexEntries$ = this.fetchService
+      .getAll$()
+      .pipe(
+        combineLatestWith(this.sightingGameStateService.getAllItems$()),
+        first()
+      );
 
-      this.getRandomUnseen();
-    });
+    return pokedexEntries$.pipe(
+      map(([pokemons, sightings]) => {
+        this.convertPokemonToPokedexEntries({
+          pokemons,
+          sightings,
+        });
+
+        this.getRandomUnseen();
+      })
+    );
   };
 
   private getRandomUnseen = () => {
@@ -81,7 +80,7 @@ export class PokemonGameStateService
     this.setState({ ...this.state, item });
   };
 
-  updateItem$ = (item: PokedexEntry) => this.pokemonFetchService.put$(item);
+  updateItem$ = (item: PokedexEntry) => this.fetchService.put$(item);
 
   private convertPokemonToPokedexEntries = ({
     pokemons,
@@ -89,12 +88,18 @@ export class PokemonGameStateService
   }: {
     pokemons: Pokemon[];
     sightings: Sighting[];
-  }): PokedexEntry[] =>
-    pokemons.map((poke) =>
+  }): void => {
+    const allItems = pokemons.map((poke) =>
       sightings.find((sigh) => sigh.pokemonId === poke.id)
         ? { ...poke, seen: true }
         : { ...poke, seen: false }
     );
+
+    this.setState({
+      ...this.state,
+      allItems,
+    });
+  };
 
   private updateSeenPokemon = (seenPokedexEntry: PokedexEntry) => {
     const item = { ...seenPokedexEntry, seen: true };

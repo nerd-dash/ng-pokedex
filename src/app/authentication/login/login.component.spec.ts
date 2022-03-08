@@ -4,16 +4,17 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { AccessToken } from 'src/app/models/AccessToken';
-import { AuthService } from 'src/app/models/AuthService';
+import { AuthFetchService } from 'src/app/models/AuthFetchService';
+import { POKEGAME_ROUTES } from 'src/app/models/RoutesMap';
 import { User } from 'src/app/models/User';
-import { USER_AUTH_SERVICE } from 'src/app/tokens/user-auth-service.token';
+import { AUTH_FETCH_SERVICE } from 'src/app/tokens/fetch/auth-fetch-service.token';
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let compiled: HTMLElement;
-  let authServiceSpy: jasmine.SpyObj<AuthService<User, AccessToken<User>>>;
+  let authServiceSpy: jasmine.SpyObj<AuthFetchService<User>>;
   let routerSpy: jasmine.SpyObj<Router>;
 
   const loginData: Partial<User> = {
@@ -33,11 +34,9 @@ describe('LoginComponent', () => {
   };
 
   beforeEach(async () => {
-    authServiceSpy = jasmine.createSpyObj<AuthService<User, AccessToken<User>>>(
-      {
-        login$: of(accessToken),
-      }
-    );
+    authServiceSpy = jasmine.createSpyObj<AuthFetchService<User>>({
+      login$: of(accessToken),
+    });
 
     routerSpy = jasmine.createSpyObj<Router>({
       navigate: undefined,
@@ -48,13 +47,13 @@ describe('LoginComponent', () => {
       imports: [
         RouterTestingModule.withRoutes([
           {
-            path: '/pokegame',
+            path: POKEGAME_ROUTES.Pokegame,
           },
         ]),
       ],
       providers: [
         {
-          provide: USER_AUTH_SERVICE,
+          provide: AUTH_FETCH_SERVICE,
           useValue: authServiceSpy,
         },
         {
@@ -101,7 +100,9 @@ describe('LoginComponent', () => {
     it('should show redirect to pokegame page if login is sucessfull', (done) => {
       fillFormGroup();
       component.onSubmit();
-      expect(routerSpy.navigate).toHaveBeenCalledOnceWith(['/pokegame']);
+      expect(routerSpy.navigate).toHaveBeenCalledOnceWith([
+        POKEGAME_ROUTES.Pokegame,
+      ]);
       done();
     });
   });

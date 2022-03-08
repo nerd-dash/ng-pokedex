@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
+import { ServiceStateSpy } from 'src/app/utils/testing/ServiceStateSpy';
 import { FetchService } from '../../models/FetchService';
 import { GameStateService } from '../../models/GameStateService';
 import { EMPTY_POKEDEX_ENTRY } from '../../models/PokedexEntry';
@@ -14,14 +15,15 @@ import { PokemonGameStateService } from './pokemon-game-state.service';
 
 describe('PokemonGameStateService', () => {
   let service: PokemonGameStateService;
-  let pokemonFetchServiceSpy: jasmine.SpyObj<FetchService<Pokemon>>;
+  let fetchServiceSpy: jasmine.SpyObj<FetchService<Pokemon>>;
   let utilsServiceSpy: jasmine.SpyObj<UtilsService>;
   let sightingGameStateSpy: GameStateService<Sighting>;
+  let stateServiceSpy: ServiceStateSpy;
 
   const venusaur = pokedexEntries[2];
 
   beforeEach(() => {
-    pokemonFetchServiceSpy = jasmine.createSpyObj<FetchService<Pokemon>>({
+    fetchServiceSpy = jasmine.createSpyObj<FetchService<Pokemon>>({
       put$: of(pokes[2]),
       getAll$: of(pokes),
     });
@@ -40,7 +42,7 @@ describe('PokemonGameStateService', () => {
     TestBed.configureTestingModule({
       providers: [
         PokemonGameStateService,
-        { provide: POKEMON_FETCH_SERVICE, useValue: pokemonFetchServiceSpy },
+        { provide: POKEMON_FETCH_SERVICE, useValue: fetchServiceSpy },
         {
           provide: SIGHTING_GAME_STATE_SERVICE,
           useValue: sightingGameStateSpy,
@@ -49,22 +51,38 @@ describe('PokemonGameStateService', () => {
       ],
     });
     service = TestBed.inject(PokemonGameStateService);
+    stateServiceSpy = new ServiceStateSpy(service);
+    service.initiateState$().subscribe().unsubscribe();
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
+  describe('initiateState$', () => {
+    it('should call the getAll method from fetch servce', () => {
+      expect(stateServiceSpy.setState).toHaveBeenCalledTimes(2);
+      expect(fetchServiceSpy.getAll$).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('getAllItems$', () => {
-    it('should update get all the pokemons from the state', (done) => {
-      service.getAllItems$().subscribe((pokemons) => {
-        expect(pokemons).toEqual(expectedPokeEntries());
-        done();
-      });
+    it('should update get all the pokemons from the state', () => {
+      service
+        .getAllItems$()
+        .subscribe((pokemons) => {
+          expect(stateServiceSpy.select).toHaveBeenCalledTimes(1);
+          expect(pokemons).toEqual(expectedPokeEntries());
+        })
+        .unsubscribe();
     });
   });
 
   describe('verifyItems', () => {
+    beforeEach(() => {
+      utilsServiceSpy.hasTheSameName.and.returnValue(false);
+    });
+
     describe('returning true', () => {
       beforeEach(() => {
         utilsServiceSpy.hasTheSameName.and.returnValue(true);
@@ -74,7 +92,7 @@ describe('PokemonGameStateService', () => {
         expect(service.verifyItems({ name: 'venusaur' })).toBeTrue();
       });
 
-      it('should before return true it should update the state making the pokemon seen', () => {
+      it('should update the state making the pokemon seen', () => {
         expect(service.verifyItems({ name: 'venusaur' })).toBeTrue();
         service.getItem$().subscribe((seenPoke) => {
           expect(sightingGameStateSpy.updateItem$).toHaveBeenCalledWith({
@@ -101,7 +119,7 @@ describe('PokemonGameStateService', () => {
         expect(utilsServiceSpy.hasTheSameName).toHaveBeenCalledTimes(1);
       });
 
-      it('should before return false it should update the state with another unseen pokemon', () => {
+      it('should update the state with another unseen pokemon', () => {
         const bulbasaur = pokes[0];
         utilsServiceSpy.getRandomItem.and.returnValue(bulbasaur);
 
@@ -130,7 +148,7 @@ describe('PokemonGameStateService', () => {
   });
 
   describe(`getNextItem`, () => {
-    afterEach(() => {
+    beforeEach(() => {
       utilsServiceSpy.getRandomItem.calls.reset();
     });
 
@@ -141,7 +159,7 @@ describe('PokemonGameStateService', () => {
         (poke) => !poke?.seen
       );
 
-      expect(utilsServiceSpy.getRandomItem).toHaveBeenCalledTimes(2);
+      expect(utilsServiceSpy.getRandomItem).toHaveBeenCalledTimes(1);
       expect(utilsServiceSpy.getRandomItem).toHaveBeenCalledWith(
         unseenPokemons
       );
@@ -159,7 +177,7 @@ describe('PokemonGameStateService', () => {
   describe('updateItem$', () => {
     it('should call the fetch service put$ observable', () => {
       service.updateItem$(pokedexEntries[0]).subscribe(() => {
-        expect(pokemonFetchServiceSpy.put$).toHaveBeenCalledOnceWith(
+        expect(fetchServiceSpy.put$).toHaveBeenCalledOnceWith(
           pokedexEntries[0]
         );
       });
