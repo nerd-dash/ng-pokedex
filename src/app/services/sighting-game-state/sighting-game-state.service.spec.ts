@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
+import { ServiceStateSpy } from 'src/app/utils/testing/ServiceStateSpy';
 import { FetchService } from '../../models/FetchService';
 import { EMPTY_SIGHTING, Sighting } from '../../models/Sighting';
 import { SIGHTING_FETCH_SERVICE } from '../../tokens/fetch/sighting-fetch-service.token';
@@ -11,6 +12,7 @@ describe('SightingGameStateService', () => {
   let service: SightingGameStateService;
   let fetchServiceSpy: jasmine.SpyObj<FetchService<Sighting>>;
   let utilsServiceSpy: jasmine.SpyObj<UtilsService>;
+  let stateServiceSpy: ServiceStateSpy;
 
   beforeEach(() => {
     fetchServiceSpy = jasmine.createSpyObj<FetchService<Sighting>>({
@@ -35,18 +37,30 @@ describe('SightingGameStateService', () => {
       ],
     });
     service = TestBed.inject(SightingGameStateService);
+    stateServiceSpy = new ServiceStateSpy(service);
+    service.initiateState$().subscribe().unsubscribe();
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
+  describe('initiateState$', () => {
+    it('should call the getAll method from fetch servce', () => {
+      expect(stateServiceSpy.setState).toHaveBeenCalledTimes(1);
+      expect(fetchServiceSpy.getAll$).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('getAllItems$', () => {
-    it('should update get all the sightings from the state', (done) => {
-      service.getAllItems$().subscribe((sighs) => {
-        expect(sighs).toEqual(sightings);
-        done();
-      });
+    it('should update get all the sightings from the state', () => {
+      service
+        .getAllItems$()
+        .subscribe((sighs) => {
+          expect(sighs).toEqual(sightings);
+          expect(stateServiceSpy.select).toHaveBeenCalledTimes(1);
+        })
+        .unsubscribe();
     });
   });
 

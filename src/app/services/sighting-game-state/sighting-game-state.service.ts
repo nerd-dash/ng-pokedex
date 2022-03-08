@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { FetchService } from 'src/app/models/FetchService';
 import { GameState } from 'src/app/models/GameState';
 import { GameStateService } from 'src/app/models/GameStateService';
@@ -21,10 +21,9 @@ export class SightingGameStateService
 {
   constructor(
     @Inject(SIGHTING_FETCH_SERVICE)
-    private sightingFetchService: FetchService<Sighting>
+    private fetchServiceSpy: FetchService<Sighting>
   ) {
     super(initialState);
-    this.init();
   }
   getNextItem = () => {
     throw 'Method not allowed!';
@@ -38,7 +37,8 @@ export class SightingGameStateService
     throw 'Method not allowed!';
   };
 
-  getAllItems$ = () => this.select((state) => state.allItems);
+  getAllItems$ = (): Observable<Sighting[]> =>
+    this.select((state) => state.allItems);
 
   updateItem$ = (item: Sighting) => {
     this.setState({
@@ -46,15 +46,16 @@ export class SightingGameStateService
       allItems: [...this.state.allItems, item],
     });
 
-    return this.sightingFetchService.post$(item);
+    return this.fetchServiceSpy.post$(item);
   };
 
-  private init = () => {
-    this.sightingFetchService.getAll$().subscribe((allItems) => {
-      this.setState({
-        ...this.state,
-        allItems,
-      });
-    });
-  };
+  initiateState$ = (): Observable<void> =>
+    this.fetchServiceSpy.getAll$().pipe(
+      map((allItems) => {
+        this.setState({
+          ...this.state,
+          allItems,
+        });
+      })
+    );
 }
