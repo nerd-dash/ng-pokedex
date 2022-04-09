@@ -1,3 +1,42 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar>
 <router-outlet data-test="router-outlet"></router-outlet>
+<ng-component *ngIf="initializer$ | async"></ng-component> -->
+<div class="pokedex">
+  <div class="pokedex__header">
+    <div class="pokedex__header--big-circle"></div>
+    <div class="pokedex__header--small-circles">
+      <div class="pokedex__header--small-circle"></div>
+      <div class="pokedex__header--small-circle"></div>
+      <div class="pokedex__header--small-circle"></div>
+    </div>
+  </div>
+
+  <div class="pokedex__stick-header">
+    <div class="pokedex__stick-header--left">
+      <div class="pokedex__stick-header--left--top"></div>
+      <div class="pokedex__stick-header--left--bottom"></div>
+    </div>
+    <div class="pokedex__stick-header--right">
+      <div class="pokedex__stick-header--right--top"></div>
+      <div class="pokedex__stick-header--right--bottom"></div>
+      <div class="pokedex__stick-header--right--hide"></div>
+    </div>
+  </div>
+
+  <div class="pokedex__main-console">
+    <div class="pokedex__image-display">
+      <div class="pokedex__image-display--screen">
+        <router-outlet data-test="router-outlet"></router-outlet>
+      </div>
+    </div>
+    <div class="pokedex__commands"></div>
+  </div>
+</div>
 <ng-component *ngIf="initializer$ | async"></ng-component>
+<!-- <img src="/assets/img/pokedex.png" width="100%" height="100%" alt="" /> -->
+<!-- <div class="pokedex__side-console">
+  <div class="pokedex__header"></div>
+  <div class="pokedex__status-display"></div>
+  <div class="pokedex__type-display"></div>
+  <div class="pokedex__base-display"></div>
+</div> -->
